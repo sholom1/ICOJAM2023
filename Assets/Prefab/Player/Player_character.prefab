@@ -217,10 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2378a37370466a24fad423c428eaf17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 1697302991497785687}
   max_speed: 10
-  speed_modifier: 5
-  acceleration_mod: 15
+  speed_modifier: 10
+  acceleration_mod: 30
 --- !u!114 &5598937690701297621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +297,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDrag: 2
-  m_AngularDrag: 1
+  m_LinearDrag: 5
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
