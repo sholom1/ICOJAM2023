@@ -13,16 +13,16 @@ public class PlayerController_1 : MonoBehaviour
     public float speed_modifier;
     public float acceleration_mod;
 
-    private InputManager input_manager;
+    private PlayerManager input_manager;
 
     public int playerID;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        input_manager = GameObject.FindObjectOfType<InputManager>();
+        input_manager = GameObject.FindObjectOfType<PlayerManager>();
 
-        input_manager.OnJoin(this.gameObject);
+        input_manager.OnJoin(this);
     }
 
     private void FixedUpdate()

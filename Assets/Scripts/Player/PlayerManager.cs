@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
 
     public List<GameObject> playerStartPos = new List<GameObject>();
-    public List<GameObject> players = new List<GameObject>();
+    public List<PlayerController_1> players = new List<PlayerController_1>();
     private int playerCount = 0;
     private int maxPlayers  = 0;
 
@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
 
     }
 
-    public void OnJoin(GameObject player)
+    public void OnJoin(PlayerController_1 player)
     {
         if (playerCount != maxPlayers)
         {
