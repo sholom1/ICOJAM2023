@@ -11,7 +11,7 @@ public class PlayerDestroyer : MonoBehaviour
     private bool watchingPlayers;
     void Start()
     {
-           Timer.instance.onTimerComplete()
+           //Timer.instance.onTimerComplete()
     }
     private void startListening()
     {
