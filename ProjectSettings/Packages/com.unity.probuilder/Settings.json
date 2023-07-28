@@ -89,11 +89,7 @@
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeComponent.SettingsEnabled",
-<<<<<<< Updated upstream
-                "value": "{\"m_Value\":true}"
-=======
                 "value": "{\"m_Value\":false}"
->>>>>>> Stashed changes
             },
             {
                 "type": "UnityEngine.Rendering.ShadowCastingMode, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -138,7 +134,7 @@
             {
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.lastMeshSelectMode",
-                "value": "{\"m_Value\":8}"
+                "value": "{\"m_Value\":4}"
             },
             {
                 "type": "UnityEngine.ProBuilder.ExtrudeMethod, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -148,25 +144,17 @@
             {
                 "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ExtrudeFaces.distance",
-<<<<<<< Updated upstream
-                "value": "{\"m_Value\":0.10000000149011612}"
-=======
                 "value": "{\"m_Value\":0.5}"
             },
             {
                 "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "BevelEdges.size",
                 "value": "{\"m_Value\":0.5}"
->>>>>>> Stashed changes
             },
             {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeBuilder.ActiveShapeIndex",
-<<<<<<< Updated upstream
-                "value": "{\"m_Value\":7}"
-=======
                 "value": "{\"m_Value\":1}"
->>>>>>> Stashed changes
             },
             {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -181,11 +169,7 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize",
-<<<<<<< Updated upstream
-                "value": "{\"m_Value\":{\"x\":0.20000000298023225,\"y\":0.009999999776482582,\"z\":0.20000000298023225}}"
-=======
                 "value": "{\"m_Value\":{\"x\":1.3659687042236329,\"y\":0.0,\"z\":1.09210205078125}}"
->>>>>>> Stashed changes
             },
             {
                 "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -194,20 +178,12 @@
             },
             {
                 "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-<<<<<<< Updated upstream
-                "key": "ShapeBuilder.Cube",
-=======
                 "key": "ShapeBuilder.Sprite",
->>>>>>> Stashed changes
                 "value": "{}"
             },
             {
                 "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-<<<<<<< Updated upstream
-                "key": "ShapeBuilder.Cylinder",
-=======
                 "key": "ShapeBuilder.Plane",
->>>>>>> Stashed changes
                 "value": "{}"
             }
         ]
