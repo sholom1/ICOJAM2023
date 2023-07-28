@@ -57,6 +57,5 @@ public class DrawTrackPath : MonoBehaviour
             edgeLine.SetPosition(count, outerPoints[count]);
             count++;
         }
-
     }
 }
