@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     private float maxTime = 20;
     [SerializeField]
     private float minTime = 5;
+    [SerializeField]
     private float timeRemaining;
 
     private void Awake()
@@ -20,12 +21,14 @@ public class Timer : MonoBehaviour
         if (instance)
             Destroy(instance);
         instance = this;
+        RestartTimer();
     }
     public void Update()
     {
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
+            onTimerUpdate.Invoke(timeRemaining);
             if (timeRemaining <= 0) onTimerComplete.Invoke();
         }
     }
