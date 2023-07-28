@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public List<GameObject> playerStartPos = new List<GameObject>();
-    public List<PlayerController_1> players = new List<PlayerController_1>();
+    public Dictionary<uint, PlayerController_1> players = new Dictionary<uint, PlayerController_1>();
     private int playerCount = 0;
     private int maxPlayers  = 0;
 
@@ -30,9 +30,16 @@ public class PlayerManager : MonoBehaviour
     {
         if (playerCount != maxPlayers)
         {
-            players.Add(player);
+            if (players.TryAdd(player.playerID, player))
+                playerCount++;
+
             player.transform.position = playerStartPos[playerCount].transform.position;
-            playerCount++;
         }
+    }
+
+    public void OnLeave(PlayerController_1 player)
+    {
+        players.Remove(player.playerID);
+        playerCount--;
     }
 }

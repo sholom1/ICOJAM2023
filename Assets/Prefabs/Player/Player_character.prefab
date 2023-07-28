@@ -349,10 +349,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2693950349061514024}
   - component: {fileID: 8803989670992447905}
-  - component: {fileID: 5598937690701297621}
   - component: {fileID: 1697302991497785687}
   - component: {fileID: 3883823629075434794}
   - component: {fileID: 2505761374921297706}
+  - component: {fileID: 5880838264359563468}
   m_Layer: 0
   m_Name: Player_character
   m_TagString: Untagged
@@ -396,19 +396,6 @@ MonoBehaviour:
   speed_modifier: 50
   acceleration_mod: 15
   playerID: 0
---- !u!114 &5598937690701297621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7768307693771970308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af82ba4cd963b849a91f88d0506a9eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCharacterScript: {fileID: 0}
 --- !u!50 &1697302991497785687
 Rigidbody2D:
   serializedVersion: 4
@@ -463,7 +450,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5598937690701297621}
+      - m_Target: {fileID: 5880838264359563468}
         m_TargetAssemblyTypeName: InputActions, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -531,3 +518,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5880838264359563468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768307693771970308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af82ba4cd963b849a91f88d0506a9eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCharacterScript: {fileID: 8803989670992447905}

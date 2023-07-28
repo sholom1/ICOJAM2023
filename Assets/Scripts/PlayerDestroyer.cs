@@ -7,8 +7,8 @@ public class PlayerDestroyer : MonoBehaviour
 {
     [SerializeField]
     private GameObject effect;
-    private Dictionary<int, Vector2> positions;
-    private Dictionary<int, PlayerController_1> playersMarkedForDeath;
+    private Dictionary<uint, Vector2> positions;
+    private Dictionary<uint, PlayerController_1> playersMarkedForDeath;
     private bool watchingPlayers;
     void Start()
     {
@@ -18,9 +18,9 @@ public class PlayerDestroyer : MonoBehaviour
     private void startListening()
     {
         watchingPlayers = true;
-        positions = new Dictionary<int, Vector2>();
-        playersMarkedForDeath = new Dictionary<int, PlayerController_1>();
-        foreach (var player in PlayerManager.instance.players)
+        positions = new Dictionary<uint, Vector2>();
+        playersMarkedForDeath = new Dictionary<uint, PlayerController_1>();
+        foreach (var player in PlayerManager.instance.players.Values)
         {
             positions.Add(player.playerID, player.transform.position);
         }
@@ -29,7 +29,7 @@ public class PlayerDestroyer : MonoBehaviour
     {
         if (watchingPlayers)
         {
-            foreach (var player in PlayerManager.instance.players)
+            foreach (var player in PlayerManager.instance.players.Values)
             {
                 if (positions.TryGetValue(player.playerID, out Vector2 position) && position != (Vector2)player.transform.position)
                 {
