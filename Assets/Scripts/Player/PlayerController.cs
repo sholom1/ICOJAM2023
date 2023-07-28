@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerController_1 : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    public GameObject deathMark;
 
     private Vector2 move_Position;
     public float max_speed;

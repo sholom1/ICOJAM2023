@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-
+    public static PlayerManager instance;
     public List<GameObject> playerStartPos = new List<GameObject>();
     public List<PlayerController_1> players = new List<PlayerController_1>();
     private int playerCount = 0;
@@ -12,6 +12,9 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        if (instance)
+            Destroy(instance);
+        instance = this;
         var startPositions = GameObject.FindGameObjectsWithTag("StartPos");
 
         foreach (var position in startPositions)
