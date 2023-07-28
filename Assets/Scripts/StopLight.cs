@@ -18,6 +18,8 @@ public class StopLight : MonoBehaviour
     private Material green;
     [SerializeField]
     private float resetDelay;
+    [SerializeField]
+    private AudioSource beeper;
     private bool hasEnded = false;
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,10 @@ public class StopLight : MonoBehaviour
         if (remaining < 0)
         {
             if (!hasEnded) StartCoroutine(restart());
+        }
+        else if (remaining < 4 && remaining > 3 && !beeper.isPlaying)
+        {
+            beeper.Play();
         }
         else if (remaining < 3)
         {
