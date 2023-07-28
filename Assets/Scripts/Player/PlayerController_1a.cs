@@ -11,6 +11,7 @@ public class PlayerController_1 : MonoBehaviour
     private Vector2 move_Position;
     public float max_speed;
     public float speed_modifier;
+    public float acceleration_mod;
 
     private void Start()
     {
@@ -26,12 +27,12 @@ public class PlayerController_1 : MonoBehaviour
     private void MovePlayer()
     {
 
-        print(move_Position);
+
 
         if (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y) < max_speed)
         {
-            Vector2 speed = move_Position * speed_modifier;
-
+            Vector2 speed = move_Position *
+                (speed_modifier + (Mathf.Abs(rb.velocity.x*acceleration_mod) + Mathf.Abs(rb.velocity.y * acceleration_mod)));
             rb.AddForce(speed , ForceMode2D.Force);
         }
     }
