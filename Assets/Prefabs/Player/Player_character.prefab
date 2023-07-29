@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 3883823629075434794}
   - component: {fileID: 2505761374921297706}
   - component: {fileID: 5880838264359563468}
+  - component: {fileID: 5837242482100076415}
   m_Layer: 0
   m_Name: Player_character
   m_TagString: Untagged
@@ -396,6 +397,8 @@ MonoBehaviour:
   speed_modifier: 50
   acceleration_mod: 15
   playerID: 0
+  check_point_num: 0
+  laps_completed: 0
 --- !u!50 &1697302991497785687
 Rigidbody2D:
   serializedVersion: 4
@@ -468,6 +471,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c86b6f44-0ab7-4130-b45f-77a9a191a14e
     m_ActionName: Player/RotateCamera[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5837242482100076415}
+        m_TargetAssemblyTypeName: PowerupSelector, Assembly-CSharp
+        m_MethodName: OnPowerUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dc77b670-3a2b-4661-b467-1e2634322c73
+    m_ActionName: Player/PowerUp[/XInputControllerWindows/buttonSouth,/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -531,3 +550,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerCharacterScript: {fileID: 8803989670992447905}
+--- !u!114 &5837242482100076415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768307693771970308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c12b838ef13c6643ae080f850175614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4075272527868393759, guid: 6d0c60d824789e249930bc509b0cd9e5, type: 3}
+  explosionPrefab: {fileID: 5562518159401244440, guid: ad35d8335873ef242b5f713812679c98, type: 3}

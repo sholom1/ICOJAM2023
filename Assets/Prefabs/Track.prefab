@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crowd_members: []
-  cheer_time: 2.5
+  cheer_time: 5
 --- !u!1 &2598743332384496302
 GameObject:
   m_ObjectHideFlags: 0
