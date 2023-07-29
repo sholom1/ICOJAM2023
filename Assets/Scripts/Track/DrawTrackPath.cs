@@ -7,6 +7,7 @@ public class DrawTrackPath : MonoBehaviour
 
     public PolygonCollider2D colliders;
     public EdgeCollider2D edge;
+    public Material material;
 
     public float line_width;
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class DrawTrackPath : MonoBehaviour
     private void DrawTrack()
     {
         var points = colliders.points;
-        print(points);
+        //print(points);
 
         int count = 0;
         int maxCount = colliders.GetTotalPointCount();
@@ -30,6 +31,7 @@ public class DrawTrackPath : MonoBehaviour
         line.positionCount = maxCount + 1;
         line.widthMultiplier = line_width;
         line.useWorldSpace = false;
+        line.material = material;
 
         while (count <= maxCount-1)
         {
@@ -51,6 +53,7 @@ public class DrawTrackPath : MonoBehaviour
         edgeLine.positionCount = maxCount;
         edgeLine.useWorldSpace = false;
         edgeLine.widthMultiplier = line_width;
+        edgeLine.material = material;
 
         while (count <= maxCount-1)
         {
