@@ -5,24 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController_2 : PlayerControllerParent
 {
-    [SerializeField] Rigidbody2D rb;
     public float max_speed;
     public float speed_modifier;
     public float acceleration_mod;
     public float reverse_speed;
     public float turn_speed;
-
-    private PlayerManager input_manager;
     private Vector2 direction = Vector2.right;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        input_manager = GameObject.FindObjectOfType<PlayerManager>();
-
-        input_manager.OnJoin(this);
-    }
-
     public void Accelerate()
     {
         if (rb.velocity.magnitude < max_speed)

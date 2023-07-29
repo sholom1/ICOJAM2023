@@ -7,26 +7,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController_1 : PlayerControllerParent
 {
-    [SerializeField] Rigidbody2D rb;
-
     private Vector2 move_Position;
     public float max_speed;
     public float speed_modifier;
     public float acceleration_mod;
-
-    private PlayerManager playerManager;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        playerID = GetComponent<PlayerInput>().user.id;
-        playerManager = GameObject.FindObjectOfType<PlayerManager>();
-        playerManager.OnJoin(this);
-    }
-    private void OnDestroy()
-    {
-        playerManager.OnLeave(this);
-    }
 
     private void FixedUpdate()
     {
