@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public List<GameObject> playerStartPos = new List<GameObject>();
     public Dictionary<uint, PlayerController_1> players = new Dictionary<uint, PlayerController_1>();
-    private int playerCount = 0;
+    public int playerCount = 0;
     private int maxPlayers  = 0;
+
+    public UnityEvent OnPlayerDestroy;
 
     private void Start()
     {
@@ -41,5 +44,19 @@ public class PlayerManager : MonoBehaviour
     {
         players.Remove(player.playerID);
         playerCount--;
+    }
+    public void PlayerDied()
+    {
+        OnPlayerDestroy.Invoke();
+    }
+
+    public void ResetPlayerPositions()
+    {
+        int position = 0;
+        foreach(KeyValuePair<uint, PlayerController_1> player in players)
+        {
+            player.Value.transform.position = playerStartPos[position].transform.position;
+            position++;
+        }
     }
 }
