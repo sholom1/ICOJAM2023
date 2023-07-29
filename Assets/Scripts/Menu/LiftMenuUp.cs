@@ -69,12 +69,12 @@ public class LiftMenuUp : MonoBehaviour
         {
             
             timer = timer - Time.deltaTime;
-            image_to_move.localPosition = new Vector3(image_to_move.localPosition.x, image_to_move.localPosition.y + 0.01f, image_to_move.localPosition.z);
+            image_to_move.localPosition = new Vector3(image_to_move.localPosition.x, image_to_move.localPosition.y + (200f * Time.deltaTime), image_to_move.localPosition.z);
 
             if(timer < 0)
             {
                 GameObject.FindObjectOfType<PlayerManager>().ChangePlayerInput("Player");
-                menuItems.SetActive(false);
+                image_to_move.gameObject.SetActive(false);
                 Destroy(this);
             }
         }

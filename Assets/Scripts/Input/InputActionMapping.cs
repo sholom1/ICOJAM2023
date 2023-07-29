@@ -24,6 +24,5 @@ public class InputActions : MonoBehaviour
     public void onUIStart(InputAction.CallbackContext context)
     {
         start_menu.TriggerTransistion();
-        print("test");
     }
 }
