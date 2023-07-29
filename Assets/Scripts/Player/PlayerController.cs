@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 public class PlayerController_1 : PlayerControllerParent
 {
     [SerializeField] Rigidbody2D rb;
-    public GameObject deathMark;
 
     private Vector2 move_Position;
     public float max_speed;
@@ -16,8 +15,6 @@ public class PlayerController_1 : PlayerControllerParent
     public float acceleration_mod;
 
     private PlayerManager playerManager;
-
-    public uint playerID;
 
     private void Start()
     {

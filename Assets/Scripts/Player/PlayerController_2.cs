@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController_2 : PlayerControllerParent
 {
@@ -8,13 +9,10 @@ public class PlayerController_2 : PlayerControllerParent
     public float max_speed;
     public float speed_modifier;
     public float acceleration_mod;
-    public float drag_mag;
+    public float reverse_speed;
     public float turn_speed;
 
     private PlayerManager input_manager;
-
-    public int playerID;
-
     private Vector2 direction = Vector2.right;
 
     private void Start()
@@ -34,26 +32,25 @@ public class PlayerController_2 : PlayerControllerParent
         }
     }
 
-    public void Break()
+    public void Reverse()
     {
-        if(rb.velocity.magnitude > 0f)
+        if (rb.velocity.magnitude < max_speed/2)
         {
-            rb.AddForce(-direction * Mathf.Min(drag_mag, rb.velocity.magnitude), ForceMode2D.Force);
+            rb.AddForce(-direction * reverse_speed, ForceMode2D.Force);
         }
     }
 
-    public void TurnLeft()
+    public void Turn(float turnSign)
     {   
-        direction = RotateVector(direction, turn_speed);
-    }
-    public void TurnRight()
-    {
-        direction = RotateVector(direction, -turn_speed);
+        direction = RotateVector(direction, turnSign * turn_speed);
+        transform.right = direction.normalized;
     }
 
     public Vector2 RotateVector(Vector2 vector, float angle)
     {
+        Debug.Log("rotating");
         float radian = angle * Mathf.Deg2Rad;
         return vector.x * new Vector2(Mathf.Cos(radian), Mathf.Sin(radian)) + vector.y * new Vector2(Mathf.Sin(radian), Mathf.Cos(radian));
     }
+
 }

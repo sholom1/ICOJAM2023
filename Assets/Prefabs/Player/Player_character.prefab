@@ -348,11 +348,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2693950349061514024}
-  - component: {fileID: 8803989670992447905}
   - component: {fileID: 1697302991497785687}
   - component: {fileID: 3883823629075434794}
   - component: {fileID: 2505761374921297706}
   - component: {fileID: 5880838264359563468}
+  - component: {fileID: 6273045078964296169}
   m_Layer: 0
   m_Name: Player_character
   m_TagString: Untagged
@@ -378,24 +378,6 @@ Transform:
   - {fileID: 5343901575721869054}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8803989670992447905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7768307693771970308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2378a37370466a24fad423c428eaf17b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1697302991497785687}
-  deathMark: {fileID: 6452006116925866028}
-  max_speed: 10
-  speed_modifier: 50
-  acceleration_mod: 15
-  playerID: 0
 --- !u!50 &1697302991497785687
 Rigidbody2D:
   serializedVersion: 4
@@ -530,4 +512,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af82ba4cd963b849a91f88d0506a9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerCharacterScript: {fileID: 8803989670992447905}
+  _playerCharacterScript: {fileID: 6273045078964296169}
+--- !u!114 &6273045078964296169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768307693771970308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11df113b39a755e4e91baf16e1b018fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMark: {fileID: 6452006116925866028}
+  playerID: 0
+  rb: {fileID: 1697302991497785687}
+  max_speed: 10
+  speed_modifier: 50
+  acceleration_mod: 15
+  reverse_speed: 0
+  turn_speed: 5

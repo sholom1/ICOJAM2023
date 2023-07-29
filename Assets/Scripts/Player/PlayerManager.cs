@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public List<GameObject> playerStartPos = new List<GameObject>();
-    public Dictionary<uint, PlayerController_1> players = new Dictionary<uint, PlayerController_1>();
+    public Dictionary<uint, PlayerControllerParent> players = new Dictionary<uint, PlayerControllerParent>();
     private int playerCount = 0;
     private int maxPlayers  = 0;
 
@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    public void OnJoin(PlayerController_1 player)
+    public void OnJoin(PlayerControllerParent player)
     {
         if (playerCount != maxPlayers)
         {
@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void OnLeave(PlayerController_1 player)
+    public void OnLeave(PlayerControllerParent player)
     {
         players.Remove(player.playerID);
         playerCount--;

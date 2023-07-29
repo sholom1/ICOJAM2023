@@ -10,7 +10,7 @@ public class PlayerDestroyer : MonoBehaviour
     [SerializeField]
     private float movementThreshold = 0.1f;
     private Dictionary<uint, Vector2> positions;
-    private Dictionary<uint, PlayerController_1> playersMarkedForDeath;
+    private Dictionary<uint, PlayerControllerParent> playersMarkedForDeath;
     private bool watchingPlayers;
     void Start()
     {
@@ -21,7 +21,7 @@ public class PlayerDestroyer : MonoBehaviour
     {
         watchingPlayers = true;
         positions = new Dictionary<uint, Vector2>();
-        playersMarkedForDeath = new Dictionary<uint, PlayerController_1>();
+        playersMarkedForDeath = new Dictionary<uint, PlayerControllerParent>();
         foreach (var player in PlayerManager.instance.players.Values)
         {
             positions.Add(player.playerID, player.transform.position);
