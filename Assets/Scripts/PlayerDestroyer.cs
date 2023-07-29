@@ -7,6 +7,8 @@ public class PlayerDestroyer : MonoBehaviour
 {
     [SerializeField]
     private GameObject effect;
+    [SerializeField]
+    private float movementThreshold = 0.1f;
     private Dictionary<uint, Vector2> positions;
     private Dictionary<uint, PlayerController_1> playersMarkedForDeath;
     private bool watchingPlayers;
@@ -31,7 +33,7 @@ public class PlayerDestroyer : MonoBehaviour
         {
             foreach (var player in PlayerManager.instance.players.Values)
             {
-                if (positions.TryGetValue(player.playerID, out Vector2 position) && position != (Vector2)player.transform.position)
+                if (positions.TryGetValue(player.playerID, out Vector2 position) && Vector2.Distance(position, (Vector2)player.transform.position) > movementThreshold)
                 {
                     playersMarkedForDeath.TryAdd(player.playerID, player);
                     player.deathMark.SetActive(true);
