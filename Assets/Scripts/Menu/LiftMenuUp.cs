@@ -12,19 +12,23 @@ public class LiftMenuUp : MonoBehaviour
 
     private PlayerManager playerManager;
 
-    private float timer = 7.5f;
+    private float timer = 5f;
     public RectTransform image_to_move;
 
     [Header("Flash settings")]
     public float flash_interval = 1.0f;
     private float flash_current_timer = 0.0f;
 
-    private float flash_back_timer = 0.2f;
+    private float fade_value = 0.005f;
+    private bool flip_fade = false;
+
+    private TextMeshProUGUI[] text;
 
     // Start is called before the first frame update
     void Start()
     {
         playerManager = GameObject.FindObjectOfType<PlayerManager>();
+        text = GetComponentsInChildren<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -34,16 +38,26 @@ public class LiftMenuUp : MonoBehaviour
         player_count.text = playerManager.players.Count + " Players";
 
         //Flashing
-        if(flash_current_timer < 0.0f)
+        if (flash_current_timer < 0.0f)
         {
-            menuItems.SetActive(false);
-            flash_back_timer -= Time.deltaTime;
-
-            if(flash_back_timer < 0.0f )
+            foreach (var text_item in text)
             {
-                menuItems.SetActive(true);
-                flash_current_timer = flash_interval;
-                flash_back_timer = 0.1f;
+                if (!flip_fade)
+                {
+                    text_item.alpha = text_item.alpha - fade_value;
+
+                    if(text_item.alpha <= 0.1f)
+                    { flip_fade = true; }
+                }
+                else
+                {
+                    text_item.alpha = text_item.alpha + fade_value;
+                    if (text_item.alpha >= 1)
+                    {
+                        flip_fade = false;
+                        flash_current_timer = flash_interval;
+                    }
+                }
             }
         }
         else
