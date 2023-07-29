@@ -7,11 +7,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController_1 : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] 
+    private Rigidbody2D rb;
+
     public GameObject deathMark;
     public bool dead = false;
 
     private Vector2 move_Position;
+    private bool isBreakDepressed;
     public float max_speed;
     public float speed_modifier;
     public float acceleration_mod;
@@ -45,14 +48,13 @@ public class PlayerController_1 : MonoBehaviour
 
     private void MovePlayer()
     {
-
-
-
-        if (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y) < max_speed)
+        if (isBreakDepressed)
+            rb.AddForce(-rb.velocity);
+        else if (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y) < max_speed)
         {
-            Vector2 speed = move_Position *
-                (speed_modifier + (Mathf.Abs(rb.velocity.x*acceleration_mod) + Mathf.Abs(rb.velocity.y * acceleration_mod)));
-            rb.AddForce(speed , ForceMode2D.Force);
+                Vector2 speed = move_Position *
+               (speed_modifier + (Mathf.Abs(rb.velocity.x * acceleration_mod) + Mathf.Abs(rb.velocity.y * acceleration_mod)));
+                rb.AddForce(speed , ForceMode2D.Force);
         }
     }
 
@@ -72,7 +74,6 @@ public class PlayerController_1 : MonoBehaviour
         //value.x = -value.x;
         move_Position = value;
     }
-
     public void Die()
     {
         dead = true;
@@ -90,5 +91,10 @@ public class PlayerController_1 : MonoBehaviour
         check_point_num = 0;
         laps_completed = 0;
         Revive();
+    }
+    
+    public void handleBreak(InputAction.CallbackContext ctx)
+    {
+        isBreakDepressed = ctx.ReadValueAsButton();
     }
 }
