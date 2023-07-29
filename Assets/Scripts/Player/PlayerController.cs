@@ -19,6 +19,10 @@ public class PlayerController_1 : MonoBehaviour
 
     public uint playerID;
 
+    [Header("TrackVars")]
+    public int check_point_num = 0;
+    public int laps_completed = 0;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
