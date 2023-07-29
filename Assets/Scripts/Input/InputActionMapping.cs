@@ -8,11 +8,6 @@ public class InputActions : MonoBehaviour
 {
     [SerializeField] private PlayerController_1 _playerCharacterScript;
 
-    private void Start()
-    {
-        _playerCharacterScript = GetComponent<PlayerController_1>();
-    }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         print(context.ReadValue<Vector2>());
