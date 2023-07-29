@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class PlayerManager : MonoBehaviour
         players.Remove(player.playerID);
         playerCount--;
     }
+    
     public void PlayerDied()
     {
         OnPlayerDestroy.Invoke();
@@ -64,6 +66,14 @@ public class PlayerManager : MonoBehaviour
         foreach (KeyValuePair<uint, PlayerController_1> player in players)
         {
             player.Value.ResetPlayer();
+        }
+    }
+
+    public void ChangePlayerInput(string value)
+    {
+        foreach(PlayerController_1 player in players.Values)
+        {
+            player.GetComponent<PlayerInput>().currentActionMap = player.GetComponent<PlayerInput>().actions.FindActionMap(value);
         }
     }
 }

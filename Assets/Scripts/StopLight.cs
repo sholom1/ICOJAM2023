@@ -32,6 +32,7 @@ public class StopLight : MonoBehaviour
     }
     void CheckTime(float remaining)
     {
+        //print(remaining);
         if (remaining < 0)
         {
             if (!hasEnded) StartCoroutine(restart());
