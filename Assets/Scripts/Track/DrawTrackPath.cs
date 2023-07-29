@@ -12,11 +12,12 @@ public class DrawTrackPath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        colliders = GetComponent<PolygonCollider2D>();
-        edge = GetComponent<EdgeCollider2D>();
         DrawTrack();
     }
-
+    private void OnDrawGizmos()
+    {
+        DrawTrack();
+    }
     private void DrawTrack()
     {
         var points = colliders.points;
@@ -25,7 +26,7 @@ public class DrawTrackPath : MonoBehaviour
         int count = 0;
         int maxCount = colliders.GetTotalPointCount();
 
-        LineRenderer line = gameObject.AddComponent<LineRenderer>();
+        LineRenderer line = colliders.gameObject.GetComponent<LineRenderer>();
         line.positionCount = maxCount + 1;
         line.widthMultiplier = line_width;
         line.useWorldSpace = false;
@@ -39,12 +40,7 @@ public class DrawTrackPath : MonoBehaviour
         line.SetPosition(maxCount, points[0]);
 
         //outer track
-
-        
-
-        GameObject outerTrack = new GameObject();
-        LineRenderer edgeLine = outerTrack.AddComponent<LineRenderer>();
-
+        LineRenderer edgeLine = edge.gameObject.GetComponent<LineRenderer>();
         count = 0;
         maxCount = edge.pointCount;
 

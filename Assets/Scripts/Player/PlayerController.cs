@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PlayerController_1 : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    public GameObject deathMark;
 
     private Vector2 move_Position;
     public float max_speed;
     public float speed_modifier;
     public float acceleration_mod;
 
-    private PlayerManager input_manager;
+    private PlayerManager playerManager;
 
-    public int playerID;
+    public uint playerID;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        input_manager = GameObject.FindObjectOfType<PlayerManager>();
-
-        input_manager.OnJoin(this);
+        playerID = GetComponent<PlayerInput>().user.id;
+        playerManager = GameObject.FindObjectOfType<PlayerManager>();
+        playerManager.OnJoin(this);
+    }
+    private void OnDestroy()
+    {
+        playerManager.OnLeave(this);
     }
 
     private void FixedUpdate()
