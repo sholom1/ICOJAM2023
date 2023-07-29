@@ -21,9 +21,4 @@ public class CheckPoint : MonoBehaviour
             }
         }
     }
-
-    public void PassCheckPoint()
-    {
-
-    }
 }

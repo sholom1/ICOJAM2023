@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class StartLine : MonoBehaviour
 {
-
     private int checkpoint_count;
     public CrowdPeople GO_to_cheer;
+
     // Start is called before the first frame update
     void Start()
     {
