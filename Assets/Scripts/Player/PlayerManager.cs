@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
 
     public List<GameObject> playerStartPos = new List<GameObject>();
-    public List<PlayerController_1> players = new List<PlayerController_1>();
+    public List<PlayerControllerParent> players = new List<PlayerControllerParent>();
     private int playerCount = 0;
     private int maxPlayers  = 0;
 
@@ -24,6 +24,15 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void OnJoin(PlayerController_1 player)
+    {
+        if (playerCount != maxPlayers)
+        {
+            players.Add(player);
+            player.transform.position = playerStartPos[playerCount].transform.position;
+            playerCount++;
+        }
+    }
+    public void OnJoin(PlayerController_2 player)
     {
         if (playerCount != maxPlayers)
         {

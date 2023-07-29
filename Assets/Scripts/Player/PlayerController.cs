@@ -4,7 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerController_1 : MonoBehaviour
+public class PlayerController_1 : PlayerControllerParent
 {
     [SerializeField] Rigidbody2D rb;
 
