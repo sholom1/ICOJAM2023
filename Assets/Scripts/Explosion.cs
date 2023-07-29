@@ -12,6 +12,8 @@ public class Explosion : MonoBehaviour
     private void FixedUpdate()
     {
         collider.radius = Mathf.Min(collider.radius + speed * Time.fixedDeltaTime, maxRadius);
+        if (maxRadius - collider.radius < .01f)
+            Destroy(gameObject);
         RenderCollider.renderCircle(line, transform.position, collider.radius);
     }
 }
