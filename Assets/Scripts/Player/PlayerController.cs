@@ -18,9 +18,15 @@ public class PlayerController_1 : MonoBehaviour
     public float speed_modifier;
     public float acceleration_mod;
 
+    public float rotation_sensitivity;
+
     private PlayerManager playerManager;
 
     public uint playerID;
+
+    [Header("TrackVars")]
+    public int check_point_num = 0;
+    public int laps_completed = 0;
 
     private void Start()
     {
@@ -56,8 +62,10 @@ public class PlayerController_1 : MonoBehaviour
     {
         if (move_Position != Vector2.zero)
         {
-            float angle = Mathf.Atan2(-move_Position.x, move_Position.y) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            float currentAngle = transform.rotation.eulerAngles.z;
+            float targetAngle = Mathf.Atan2(-move_Position.x, move_Position.y) * Mathf.Rad2Deg;
+            
+            transform.rotation = Quaternion.AngleAxis(Mathf.LerpAngle(currentAngle, targetAngle, rotation_sensitivity), Vector3.forward);
         }
     }
 
