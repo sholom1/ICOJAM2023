@@ -545,4 +545,4 @@ MonoBehaviour:
   speed_modifier: 50
   acceleration_mod: 15
   reverse_speed: 0
-  turn_speed: 5
+  turn_speed: 50

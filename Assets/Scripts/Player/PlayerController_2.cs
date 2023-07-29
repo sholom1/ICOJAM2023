@@ -26,16 +26,17 @@ public class PlayerController_2 : PlayerControllerParent
 
     public void Turn(float turnSign)
     {
-        print(turnSign);
-        var dir = Mathf.Atan2(turnSign, transform.up.y) * Mathf.Rad2Deg;
-        print(dir);
+        transform.up = RotateVector(transform.up, -turnSign*turn_speed);
+        //print(turnSign);
+        //var dir = Mathf.Atan2(turnSign, transform.up.y) * Mathf.Rad2Deg;
+        //print(dir);
         //transform.right = dir.normalized;
     }
 
     public Vector2 RotateVector(Vector2 vector, float angle)
     {
         float radian = angle * Mathf.Deg2Rad;
-        return vector.x * new Vector2(Mathf.Cos(radian), Mathf.Sin(radian)) + vector.y * new Vector2(Mathf.Sin(radian), Mathf.Cos(radian));
+        return vector.x * new Vector2(Mathf.Cos(radian), Mathf.Sin(radian)) + vector.y * new Vector2(-Mathf.Sin(radian), Mathf.Cos(radian));
     }
 
 }

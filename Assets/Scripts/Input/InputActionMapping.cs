@@ -13,7 +13,8 @@ public class InputActions : MonoBehaviour
     private float turn;
     void FixedUpdate()
     {
-        acceleration = dampAxis(acceleration, lastInput.y, inputSensitivity);
+        acceleration = lastInput.y;
+        //acceleration = dampAxis(acceleration, lastInput.y, inputSensitivity);
         turn = dampAxis(turn, lastInput.x, inputSensitivity);
         _playerCharacterScript.Accelerate(acceleration);
         _playerCharacterScript.Turn(turn);
