@@ -76,10 +76,19 @@ public class PlayerController_1 : MonoBehaviour
     public void Die()
     {
         dead = true;
+        gameObject.SetActive(false);
         playerManager.PlayerDied();
     }
     public void Revive()
     {
         dead = false;
+        gameObject.SetActive(true);
+    }
+
+    public void ResetPlayer()
+    {
+        check_point_num = 0;
+        laps_completed = 0;
+        Revive();
     }
 }

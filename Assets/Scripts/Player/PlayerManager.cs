@@ -59,4 +59,11 @@ public class PlayerManager : MonoBehaviour
             position++;
         }
     }
+    public void ResetPlayers()
+    {
+        foreach (KeyValuePair<uint, PlayerController_1> player in players)
+        {
+            player.Value.ResetPlayer();
+        }
+    }
 }

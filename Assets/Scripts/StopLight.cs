@@ -59,4 +59,9 @@ public class StopLight : MonoBehaviour
         greenLight.material = green;
         redLight.material = black;
     }
+
+    public void StartRedLight()
+    {
+        Timer.instance.StartTimer(0f);
+    }
 }
