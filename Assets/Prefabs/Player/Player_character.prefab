@@ -391,9 +391,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1697302991497785687}
-  linearDrag: 1
-  angularDrag: 5
-  dragMultiplier: 10
   deathMark: {fileID: 6452006116925866028}
   max_speed: 10
   speed_modifier: 50
@@ -490,9 +487,29 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 532edf27-3f3a-43b3-98d4-1175e8096e91
     m_ActionName: Player/Break[/XInputControllerWindows/leftTrigger,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 090aa571-0e50-4879-8707-f593e9bcb710
+    m_ActionName: UI/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5880838264359563468}
+        m_TargetAssemblyTypeName: InputActions, Assembly-CSharp
+        m_MethodName: onUIStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4190248e-cb1e-4756-9a15-25aff3882207
+    m_ActionName: UI/Start[/XInputControllerWindows/start,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!61 &2505761374921297706
@@ -553,3 +570,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerCharacterScript: {fileID: 8803989670992447905}
+  start_menu: {fileID: 0}
