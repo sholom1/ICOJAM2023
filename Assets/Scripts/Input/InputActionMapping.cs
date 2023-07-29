@@ -7,25 +7,29 @@ using UnityEngine.InputSystem;
 public class InputActions : MonoBehaviour
 {
     [SerializeField] private PlayerController_2 _playerCharacterScript;
-    public void OnMove(InputAction.CallbackContext context)
+    [SerializeField] private float inputSensitivity;
+    private Vector2 lastInput;
+    private float acceleration = 0;
+    private float turn;
+    void FixedUpdate()
     {
-        Debug.Log(context.ReadValue<Vector2>().x);
-        _playerCharacterScript.Turn(Mathf.Sign(context.ReadValue<Vector2>().x));
+        acceleration = dampAxis(acceleration, lastInput.y, inputSensitivity);
+        turn = dampAxis(turn, lastInput.x, inputSensitivity);
+        _playerCharacterScript.Accelerate(acceleration);
+        _playerCharacterScript.Turn(turn);
     }
-    public void OnReverse(InputAction.CallbackContext context)
+    float dampAxis (float current, float input, float sensitivity)
     {
-        Debug.Log("reverse");
-        if (context.ReadValueAsButton())
-        {
-            _playerCharacterScript.Reverse();
-        }
+        if (input != 0)
+            return Mathf.Clamp(current + input * sensitivity * Time.deltaTime, Mathf.Min(0, input), Mathf.Max(input, 0));
+        return 0;
     }
     public void OnAccelerate(InputAction.CallbackContext context)
     {
-        Debug.Log("Accell");
-        if (context.ReadValueAsButton())
-        {
-            _playerCharacterScript.Accelerate();
-        }
+        lastInput.y = context.ReadValue<float>();
+    }
+    public void OnTurn(InputAction.CallbackContext context)
+    {
+        lastInput.x = context.ReadValue<float>();
     }
 }

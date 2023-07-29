@@ -36,7 +36,7 @@ public class PlayerController_1 : PlayerControllerParent
         if (move_Position != Vector2.zero)
         {
             float angle = Mathf.Atan2(-move_Position.x, move_Position.y) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(angle, Vector2.up);
         }
     }
 

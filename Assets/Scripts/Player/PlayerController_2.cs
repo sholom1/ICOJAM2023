@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController_2 : PlayerControllerParent
 {
@@ -10,12 +7,11 @@ public class PlayerController_2 : PlayerControllerParent
     public float acceleration_mod;
     public float reverse_speed;
     public float turn_speed;
-    private Vector2 direction = Vector2.right;
-    public void Accelerate()
+    public void Accelerate(float throttle)
     {
-        if (rb.velocity.magnitude < max_speed)
+        if (rb.velocity.magnitude < max_speed / (throttle < 0 ? 2 : 1))
         {
-            Vector2 speed = direction * speed_modifier;
+            Vector2 speed = transform.up * speed_modifier * throttle;
             rb.AddForce(speed, ForceMode2D.Force);
         }
     }
@@ -24,19 +20,20 @@ public class PlayerController_2 : PlayerControllerParent
     {
         if (rb.velocity.magnitude < max_speed/2)
         {
-            rb.AddForce(-direction * reverse_speed, ForceMode2D.Force);
+            rb.AddForce(-transform.up * reverse_speed, ForceMode2D.Force);
         }
     }
 
     public void Turn(float turnSign)
-    {   
-        direction = RotateVector(direction, turnSign * turn_speed);
-        transform.right = direction.normalized;
+    {
+        print(turnSign);
+        var dir = Mathf.Atan2(turnSign, transform.up.y) * Mathf.Rad2Deg;
+        print(dir);
+        //transform.right = dir.normalized;
     }
 
     public Vector2 RotateVector(Vector2 vector, float angle)
     {
-        Debug.Log("rotating");
         float radian = angle * Mathf.Deg2Rad;
         return vector.x * new Vector2(Mathf.Cos(radian), Mathf.Sin(radian)) + vector.y * new Vector2(Mathf.Sin(radian), Mathf.Cos(radian));
     }

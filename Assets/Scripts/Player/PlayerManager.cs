@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
                 playerCount++;
 
             player.transform.position = playerStartPos[playerCount].transform.position;
+            player.transform.up = playerStartPos[playerCount].transform.up;
         }
     }
 
