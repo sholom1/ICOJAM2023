@@ -16,7 +16,6 @@ public class InputActions : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //print(context.ReadValue<Vector2>());
         _playerCharacterScript.updateMovement(context.ReadValue<Vector2>());
     }
 

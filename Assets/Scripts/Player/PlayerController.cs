@@ -45,7 +45,6 @@ public class PlayerController_1 : MonoBehaviour
             {
                 stick.playerController = this;
                 players_stick = stick;
-                
                 break;
             }
         }
@@ -91,7 +90,8 @@ public class PlayerController_1 : MonoBehaviour
     {
         //value.x = -value.x;
         move_Position = value;
-        players_stick.onChangeInput(value);
+        if(players_stick != null)
+            players_stick.onChangeInput(value);
     }
     public void Die()
     {
