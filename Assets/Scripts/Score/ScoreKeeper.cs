@@ -5,13 +5,22 @@ using TMPro;
 
 public class ScoreKeeper : MonoBehaviour
 {
+    //Game Logic
     int scoreToWin = 3;
     Dictionary<uint, uint> score = new Dictionary<uint, uint>();
     Dictionary<uint, uint> coins = new Dictionary<uint, uint>();
+
+    //Using Componenets
     PlayerManager playerManager;
     LiftMenuUp liftMenuUp;
 
-    //TMP_Text titleText;
+    //UI
+    [SerializeField]
+    GameObject scoreCard;
+    [SerializeField]
+    GameObject scoreCardBoard;
+    [SerializeField]
+    TMP_Text titleText;
 
     [SerializeField]
     GameObject countDownAnimation;
@@ -20,39 +29,60 @@ public class ScoreKeeper : MonoBehaviour
     {
         playerManager = FindObjectOfType<PlayerManager>();
         playerManager.OnPlayerDestroy.AddListener(PlayerDestroyed);
+        playerManager.OnPlayerJoin.AddListener(PlayerJoined);
 
         liftMenuUp = FindObjectOfType<LiftMenuUp>();
         liftMenuUp.OnCompleteLift.AddListener(StartGame);
+    }
 
-        ResetPlayerScore();
-        ResetPlayerCoins();
-    }
-    private void OnDestroy()
+    private void PlayerJoined()
     {
-        playerManager.OnPlayerDestroy.RemoveListener(PlayerDestroyed);
-    }
-    private void ResetPlayerScore()
-    {
-        score.Clear();
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
+        //Adding scores
+        foreach (var player in playerManager.players.Values)
         {
-            score.Add(player.Value.playerID, 0);
+            //Adding player to score
+            if (!score.ContainsKey(player.playerID))
+            {
+                score.Add(player.playerID, 0);
+            }
+            if (!coins.ContainsKey(player.playerID))
+            {
+                coins.Add(player.playerID, 0);
+            }
         }
+        InitalizeScoreCards();
     }
-    private void ResetPlayerCoins()
+    private void InitalizeScoreCards()
     {
-        coins.Clear();
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
+        //Deleting all children
+        for(int i = scoreCardBoard.transform.childCount-1; i >= 0; i--)
         {
-            coins.Add(player.Value.playerID, 0);
+            Destroy(scoreCardBoard.transform.GetChild(i).gameObject);
+        }
+
+        //Adding scores
+        foreach (var player in playerManager.players.Values) {
+            GameObject currentScoreDisplay = Instantiate(scoreCard, scoreCardBoard.transform);
+            ScoreCardDisplay scoreCardDisplay = currentScoreDisplay.GetComponent<ScoreCardDisplay>();
+            scoreCardDisplay.SetPlayer(player);
+            scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()]);
+        }
+        //UpdateScoreBoard();
+    }
+
+    private void UpdateScoreBoard()
+    {
+        for (int i = 0; i < scoreCardBoard.transform.childCount; i++)
+        {
+            GameObject currentScoreDisplay = scoreCardBoard.transform.GetChild(i).gameObject;
+            ScoreCardDisplay scoreCardDisplay = currentScoreDisplay.GetComponent<ScoreCardDisplay>();
+            scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()]);
         }
     }
     public void StartGame()
     {
-        ResetPlayerScore();
-        ResetPlayerCoins();
         StartRound();
-        //titleText.text = "First to " + scoreToWin.ToString();
+        titleText.text = "First to " + scoreToWin.ToString();
     }
 
     public void StartRound()
@@ -114,6 +144,7 @@ public class ScoreKeeper : MonoBehaviour
                 }
             }
         }
+        UpdateScoreBoard();
 
         //Adding points and checking end of round
         score[leadPlayer.playerID] += 1;

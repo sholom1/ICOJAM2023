@@ -83,9 +83,10 @@ public class PlayerController_1 : MonoBehaviour
     public void Revive()
     {
         dead = false;
+        deathMark.SetActive(false);
         gameObject.SetActive(true);
     }
-
+    
     public void ResetPlayer()
     {
         check_point_num = 0;

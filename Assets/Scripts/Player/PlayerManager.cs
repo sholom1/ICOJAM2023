@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     private int maxPlayers  = 0;
 
     public UnityEvent OnPlayerDestroy;
+    public UnityEvent OnPlayerJoin;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class PlayerManager : MonoBehaviour
 
             player.transform.position = playerStartPos[playerCount].transform.position;
         }
+        OnPlayerJoin.Invoke();
         ResetPlayerPositions();
     }
 
