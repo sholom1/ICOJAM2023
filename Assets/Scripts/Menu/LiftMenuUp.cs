@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class LiftMenuUp : MonoBehaviour
 {
     public bool start_lifting_menu = false;
@@ -23,6 +23,8 @@ public class LiftMenuUp : MonoBehaviour
     private bool flip_fade = false;
 
     private TextMeshProUGUI[] text;
+
+    public UnityEvent OnCompleteLift;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +75,7 @@ public class LiftMenuUp : MonoBehaviour
 
             if(timer < 0)
             {
-                GameObject.FindObjectOfType<PlayerManager>().ChangePlayerInput("Player");
+                OnCompleteLift.Invoke();
                 image_to_move.gameObject.SetActive(false);
                 Destroy(this);
             }

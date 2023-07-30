@@ -48,20 +48,22 @@ public class StopLight : MonoBehaviour
     }
     IEnumerator restart()
     {
+        yield return new WaitForSeconds(resetDelay);
+        SetGreenLight();
+    }
+    public void SetRedLight()
+    {
         greenLight.material = black;
         redLight.material = red;
         display.text = "X";
         hasEnded = true;
-        yield return new WaitForSeconds(resetDelay);
+    }
+    public void SetGreenLight()
+    {
         hasEnded = false;
         display.text = "";
         Timer.instance.RestartTimer();
         greenLight.material = green;
         redLight.material = black;
-    }
-
-    public void StartRedLight()
-    {
-        Timer.instance.StartTimer(0f);
     }
 }

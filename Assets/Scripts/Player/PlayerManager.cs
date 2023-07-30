@@ -26,8 +26,6 @@ public class PlayerManager : MonoBehaviour
             playerStartPos.Add(position);
             maxPlayers++;
         }
-
-
     }
 
     public void OnJoin(PlayerController_1 player)

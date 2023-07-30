@@ -5,18 +5,25 @@ using TMPro;
 
 public class ScoreKeeper : MonoBehaviour
 {
-    int scoreToWin;
+    int scoreToWin = 3;
     Dictionary<uint, uint> score = new Dictionary<uint, uint>();
     Dictionary<uint, uint> coins = new Dictionary<uint, uint>();
     PlayerManager playerManager;
+    LiftMenuUp liftMenuUp;
 
-    TMP_Text titleText;
+    //TMP_Text titleText;
 
+    [SerializeField]
+    GameObject countDownAnimation;
     // Start is called before the first frame update
     void Start()
     {
-        playerManager = GameObject.FindObjectOfType<PlayerManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
         playerManager.OnPlayerDestroy.AddListener(PlayerDestroyed);
+
+        liftMenuUp = FindObjectOfType<LiftMenuUp>();
+        liftMenuUp.OnCompleteLift.AddListener(StartGame);
+
         ResetPlayerScore();
         ResetPlayerCoins();
     }
@@ -34,7 +41,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     private void ResetPlayerCoins()
     {
-        score.Clear();
+        coins.Clear();
         foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
         {
             coins.Add(player.Value.playerID, 0);
@@ -45,19 +52,31 @@ public class ScoreKeeper : MonoBehaviour
         ResetPlayerScore();
         ResetPlayerCoins();
         StartRound();
-
-        titleText.text = "First to " + scoreToWin.ToString();
+        //titleText.text = "First to " + scoreToWin.ToString();
     }
+
     public void StartRound()
     {
         playerManager.ResetPlayerPositions();
         playerManager.ResetPlayers();
 
+
+        GameObject countDown = Instantiate(countDownAnimation);
+        CountDownAnimation currentCountDownAnimation = countDown.GetComponent<CountDownAnimation>();
+        currentCountDownAnimation.OnAnimationComplete.AddListener(CompleteCountDown);
+
         StopLight stopLight = FindObjectOfType<StopLight>();
-        if(stopLight != null)
+        if (stopLight != null)
         {
-            stopLight.StartRedLight();
+            stopLight.StopAllCoroutines();
+            stopLight.SetRedLight();
+            currentCountDownAnimation.OnAnimationComplete.AddListener(stopLight.SetGreenLight);
         }
+
+    }
+    public void CompleteCountDown()
+    {
+        playerManager.ChangePlayerInput("Player");
     }
 
     public void PlayerDestroyed()
@@ -110,6 +129,6 @@ public class ScoreKeeper : MonoBehaviour
 
     public void EndGame()
     {
-
+        Debug.Log("end game");
     }
 }
