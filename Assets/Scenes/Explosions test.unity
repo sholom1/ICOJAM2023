@@ -898,6 +898,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 979945da4c701284b89752ad25d33045, type: 2}
+    - target: {fileID: 5718222764618911509, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      propertyPath: stick_id
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6316191774471230024, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
       propertyPath: m_Name
       value: Joystick (1)
@@ -1147,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ecb778a144c6ea949bb80f0c0011de0c, type: 2}
+    - target: {fileID: 5718222764618911509, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      propertyPath: stick_id
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6316191774471230024, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
       propertyPath: m_Name
       value: Joystick (3)
@@ -1165,7 +1173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8223978336273563822, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8482182
+      value: 0.753
       objectReference: {fileID: 0}
     - target: {fileID: 8223978336273563822, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1409,9 +1417,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.37
+  m_Intensity: 0.75
   m_Range: 25.61
-  m_SpotAngle: 59.3
+  m_SpotAngle: 53.4
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -1576,6 +1584,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStartPos: []
   playerCount: 0
+  playerMats:
+  - {fileID: 2100000, guid: 43196339a86fb4f4e9601608f0a50651, type: 2}
+  - {fileID: 2100000, guid: 8bb7275089c87294fad49e751f87bbd3, type: 2}
+  - {fileID: 2100000, guid: ecb778a144c6ea949bb80f0c0011de0c, type: 2}
+  - {fileID: 2100000, guid: 979945da4c701284b89752ad25d33045, type: 2}
   OnPlayerDestroy:
     m_PersistentCalls:
       m_Calls: []
@@ -6206,6 +6219,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8bb7275089c87294fad49e751f87bbd3, type: 2}
+    - target: {fileID: 5718222764618911509, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      propertyPath: stick_id
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6316191774471230024, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
       propertyPath: m_Name
       value: Joystick (2)
@@ -6657,6 +6674,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 43196339a86fb4f4e9601608f0a50651, type: 2}
+    - target: {fileID: 5718222764618911509, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      propertyPath: stick_id
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6316191774471230024, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
       propertyPath: m_Name
       value: Joystick

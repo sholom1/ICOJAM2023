@@ -18,7 +18,6 @@ public class InputActions : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //print(context.ReadValue<Vector2>());
         _playerCharacterScript.updateMovement(context.ReadValue<Vector2>());
     }
 
@@ -32,5 +31,10 @@ public class InputActions : MonoBehaviour
         {
             start_menu.TriggerTransistion();
         }
+    }
+
+    public void onUIMove(InputAction.CallbackContext context)
+    {
+        _playerCharacterScript.onUIMove(context.ReadValue<Vector2>());
     }
 }
