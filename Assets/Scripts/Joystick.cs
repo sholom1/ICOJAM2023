@@ -17,6 +17,6 @@ public class Joystick : MonoBehaviour
     public void onChangeInput(Vector2 value)
     {
         Vector3 rotation = new Vector3(value.y, 0.0f, -value.x);
-        transform.eulerAngles = start_vector + (rotation * 5);
+        transform.eulerAngles = start_vector + (rotation * 25);
     }
 }
