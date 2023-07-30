@@ -21,7 +21,14 @@ public class ObstacleManager : MonoBehaviour
     {
         foreach (var obstacle in obstacles)
         {
-            obstacle.swap();
+            obstacle.swapRandom();
+        }
+    }
+    public void Swap()
+    {
+        foreach (var obstacle in obstacles)
+        {
+            obstacle.Swap();
         }
     }
 }

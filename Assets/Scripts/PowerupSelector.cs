@@ -36,7 +36,7 @@ public class PowerupSelector : MonoBehaviour
                 Physics2D.IgnoreCollision(Instantiate(explosionPrefab, transform.position, Quaternion.identity), GetComponent<Collider2D>());
                 break;
             case powerups.swapObstacles:
-                ObstacleManager.instance.randomlySwap();
+                ObstacleManager.instance.Swap();
                 break;
         }
         selectedPowerup = powerups.none;
