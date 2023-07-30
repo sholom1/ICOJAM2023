@@ -6,13 +6,11 @@ using TMPro;
 public class ScoreKeeper : MonoBehaviour
 {
     //Game Logic
-    int scoreToWin = 3;
     Dictionary<uint, uint> score = new Dictionary<uint, uint>();
     Dictionary<uint, uint> coins = new Dictionary<uint, uint>();
 
     //Using Componenets
     PlayerManager playerManager;
-    LiftMenuUp liftMenuUp;
 
     //UI
     [SerializeField]
@@ -22,19 +20,19 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField]
     TMP_Text titleText;
 
-    [SerializeField]
-    GameObject countDownAnimation;
+    List<ScoreCardDisplay> scoreCardDisplays = new List<ScoreCardDisplay>();
+
     // Start is called before the first frame update
     void Start()
     {
         playerManager = FindObjectOfType<PlayerManager>();
-        playerManager.OnPlayerDestroy.AddListener(PlayerDestroyed);
         playerManager.OnPlayerJoin.AddListener(PlayerJoined);
-
-        liftMenuUp = FindObjectOfType<LiftMenuUp>();
-        liftMenuUp.OnCompleteLift.AddListener(StartGame);
     }
-
+    private void Update()
+    {
+        //for testing
+        UpdateScoreBoard();
+    }
     private void PlayerJoined()
     {
         //Adding scores
@@ -61,105 +59,59 @@ public class ScoreKeeper : MonoBehaviour
         }
 
         //Adding scores
+        scoreCardDisplays.Clear();
         foreach (var player in playerManager.players.Values) {
             GameObject currentScoreDisplay = Instantiate(scoreCard, scoreCardBoard.transform);
             ScoreCardDisplay scoreCardDisplay = currentScoreDisplay.GetComponent<ScoreCardDisplay>();
             scoreCardDisplay.SetPlayer(player);
             scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()]);
+            scoreCardDisplays.Add(scoreCardDisplay);
         }
-        //UpdateScoreBoard();
+        UpdateScoreBoard();
     }
-
-    private void UpdateScoreBoard()
+    public void UpdateScoreBoard()
     {
-        for (int i = 0; i < scoreCardBoard.transform.childCount; i++)
+        foreach(var scoreCardDisplay in scoreCardDisplays) 
         {
-            GameObject currentScoreDisplay = scoreCardBoard.transform.GetChild(i).gameObject;
-            ScoreCardDisplay scoreCardDisplay = currentScoreDisplay.GetComponent<ScoreCardDisplay>();
             scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()]);
         }
     }
-    public void StartGame()
+    public void AddScore(uint playerID, uint amount)
     {
-        StartRound();
-        titleText.text = "First to " + scoreToWin.ToString();
+        score[playerID] += amount;
     }
-
-    public void StartRound()
+    public void AddCoins(uint playerID, uint amount)
     {
-        playerManager.ResetPlayerPositions();
-        playerManager.ResetPlayers();
-
-        GameObject canvas = FindObjectOfType<Canvas>().gameObject;
-        GameObject countDown = Instantiate(countDownAnimation, canvas.transform);
-        CountDownAnimation currentCountDownAnimation = countDown.GetComponent<CountDownAnimation>();
-        currentCountDownAnimation.OnAnimationComplete.AddListener(CompleteCountDown);
-
-        StopLight stopLight = FindObjectOfType<StopLight>();
-        if (stopLight != null)
+        coins[playerID] += amount;
+    }
+    public void SetScoreToWin(int amount)
+    {
+        titleText.text = "First to " + amount.ToString();
+    }
+    public List<uint> GetHighestScoreID()
+    {
+        List<uint> output = new List<uint>();
+        uint highestValue = 0;
+        foreach(var score in score.Values)
         {
-            stopLight.SetRedLight();
-            stopLight.StopAllCoroutines();
-            currentCountDownAnimation.OnAnimationComplete.AddListener(stopLight.SetGreenLight);
-        }
-
-    }
-    public void CompleteCountDown()
-    {
-        playerManager.ChangePlayerInput("Player");
-    }
-
-    public void PlayerDestroyed()
-    {
-        int alivePlayers = 0;
-
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
-        {
-            if (player.Value.dead == false)
+            if(score > highestValue)
             {
-                alivePlayers++;
+                highestValue = score;
             }
         }
-        if(alivePlayers <= 1)
-        {
-            EndRound();
-        }
-    }
 
-    public void EndRound()
-    {
-        //Searching for the leading player
-        PlayerController_1 leadPlayer = null;
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
+        foreach(var player in score)
         {
-            if (leadPlayer == null)
+            if (player.Value == highestValue)
             {
-                leadPlayer = player.Value;
-            }
-            else
-            {
-                if (leadPlayer.laps_completed < player.Value.laps_completed && leadPlayer.check_point_num < player.Value.check_point_num)
-                {
-                    leadPlayer = player.Value;
-                }
+                output.Add(player.Key);
             }
         }
-        UpdateScoreBoard();
 
-        //Adding points and checking end of round
-        score[leadPlayer.playerID] += 1;
-        if(score[leadPlayer.playerID] >= scoreToWin)
-        {
-            EndGame();
-        }
-        else
-        {
-            StartRound();
-        }
+        return output;
     }
-
-    public void EndGame()
+    public uint GetScore(uint playerID)
     {
-        Debug.Log("end game");
+        return score[playerID];
     }
 }

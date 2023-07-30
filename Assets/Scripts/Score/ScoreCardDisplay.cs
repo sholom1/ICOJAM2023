@@ -17,7 +17,10 @@ public class ScoreCardDisplay : MonoBehaviour
     public void UpdateScore(float score)
     {
         string displayText = "";
-        displayText += "ID: " + player.playerID.ToString() + " Score: "+ score.ToString();
+        displayText += "ID: " + player.playerID.ToString() + 
+            " Score: "+ score.ToString() + 
+            " Laps: " + player.laps_completed.ToString() +
+            " Checkpoints: " + player.check_point_num.ToString();
         GetComponentInChildren<TMP_Text>().text = displayText;
     }
 }
