@@ -43,12 +43,15 @@ public class RoundManager : MonoBehaviour
         currentCountDownAnimation.OnAnimationComplete.AddListener(CompleteCountDown);
 
         StopLight stopLight = FindObjectOfType<StopLight>();
-        if (stopLight != null)
+        
+        stopLight.SetRedLight();
+        currentCountDownAnimation.OnAnimationComplete.AddListener(() =>
         {
-            stopLight.SetRedLight();
-            stopLight.StopAllCoroutines();
-            currentCountDownAnimation.OnAnimationComplete.AddListener(stopLight.SetGreenLight);
-        }
+            Timer.instance.RestartTimer();
+            stopLight.SetGreenLight();
+            stopLight.enabled = true;
+        });
+        
 
     }
 

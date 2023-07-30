@@ -21,7 +21,6 @@ public class Timer : MonoBehaviour
         if (instance)
             Destroy(instance);
         instance = this;
-        RestartTimer();
     }
     public void Update()
     {
