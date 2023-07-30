@@ -81,6 +81,11 @@ public class RoundManager : MonoBehaviour
 
     public void EndRound()
     {
+        //Award coins
+        foreach (var player in playerManager.players)
+        {
+            scoreKeeper.AddCoins(player.Key, (uint)(player.Value.check_point_num + player.Value.laps_completed * 5));
+        }
         //Searching for the leading player
         PlayerController_1 leadPlayer = null;
         foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
