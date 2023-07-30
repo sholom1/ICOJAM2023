@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PowerupSelector : MonoBehaviour
 {
     [SerializeField] Rigidbody2D bulletPrefab;
+    [SerializeField] float bulletSpeed;
     [SerializeField] Collider2D explosionPrefab;
     enum powerups
     {
@@ -29,7 +30,7 @@ public class PowerupSelector : MonoBehaviour
         {
             case powerups.bullet:
                 var bullet = Instantiate(bulletPrefab, transform.position + transform.up, transform.rotation);
-                bullet.velocity = GetComponent<Rigidbody2D>().velocity * 2;
+                bullet.velocity = GetComponent<Rigidbody2D>().velocity + (Vector2)transform.up * bulletSpeed;
                 Destroy(bullet.gameObject, 5);
                 break;
             case powerups.explosion:
