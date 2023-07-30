@@ -50,13 +50,13 @@ public class CameraPan : MonoBehaviour
                 //move to help on left
                 transform.position = Vector3.MoveTowards(transform.position, help_location, movement_speed * Time.deltaTime);
 
-                transform.rotation = Quaternion.Lerp(transform.rotation, help_rotation, movement_speed * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, help_rotation, movement_speed*1.5f * Time.deltaTime);
             }
             else if (screen_index == 0)
             {
                 //move back to right
                 transform.position = Vector3.MoveTowards(transform.position, movement_vectors[0], movement_speed * Time.deltaTime);
-                transform.rotation = Quaternion.Lerp(transform.rotation, start_rot, movement_speed * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, start_rot, movement_speed*1.5f * Time.deltaTime);
             }
         }
     }
@@ -75,11 +75,14 @@ public class CameraPan : MonoBehaviour
         }
     }
 
-    public void TiggerTransistion()
+    public bool TiggerTransistion()
     {
-        if (screen_index == 0)
+        if (screen_index == 0 && Vector3.Distance(this.gameObject.transform.position, movement_vectors[0]) < 0.01f &&
+            transform.rotation == start_rot)
         {
             move_camera = true;
+            return true;
         }
+        return false;
     }
 }

@@ -88,11 +88,10 @@ public class LiftMenuUp : MonoBehaviour
 
     public void TriggerTransistion()
     {
-        start_lifting_menu = true;
-        playerManager.GetComponent<PlayerInputManager>().DisableJoining();
-        
-        if(camera_pan != null)
+        if(camera_pan != null && camera_pan.TiggerTransistion())
         {
+            start_lifting_menu = true;
+            playerManager.GetComponent<PlayerInputManager>().DisableJoining();
             camera_pan.TiggerTransistion();
         }
     }
