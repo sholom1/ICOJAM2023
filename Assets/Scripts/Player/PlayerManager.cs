@@ -11,6 +11,9 @@ public class PlayerManager : MonoBehaviour
     private int playerCount = 0;
     private int maxPlayers  = 0;
 
+    [Header("Player materials")]
+    public Material[] playerMats;
+
     private void Start()
     {
         if (instance)
@@ -32,7 +35,11 @@ public class PlayerManager : MonoBehaviour
         if (playerCount != maxPlayers)
         {
             if (players.TryAdd(player.playerID, player))
+            {
+                player.p_material = playerMats[playerCount];
+                player.setMaterial();
                 playerCount++;
+            }
 
             player.transform.position = playerStartPos[playerCount].transform.position;
         }

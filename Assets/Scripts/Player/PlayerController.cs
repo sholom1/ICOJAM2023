@@ -24,6 +24,10 @@ public class PlayerController_1 : MonoBehaviour
 
     public uint playerID;
 
+    public Joystick players_stick;
+
+    public Material p_material;
+
     [Header("TrackVars")]
     public int check_point_num = 0;
     public int laps_completed = 0;
@@ -34,6 +38,17 @@ public class PlayerController_1 : MonoBehaviour
         playerID = GetComponent<PlayerInput>().user.id;
         playerManager = GameObject.FindObjectOfType<PlayerManager>();
         playerManager.OnJoin(this);
+
+        foreach(Joystick stick in GameObject.FindObjectsOfType<Joystick>())
+        {
+            if(stick.stick_id == playerID)
+            {
+                stick.playerController = this;
+                players_stick = stick;
+                
+                break;
+            }
+        }
     }
     private void OnDestroy()
     {
@@ -73,9 +88,18 @@ public class PlayerController_1 : MonoBehaviour
     {
         //value.x = -value.x;
         move_Position = value;
+        players_stick.onChangeInput(value);
     }
     public void HandleBreak(InputAction.CallbackContext ctx)
     {
         isBreakDepressed = ctx.ReadValueAsButton();
+    }
+    
+    public void setMaterial()
+    {
+        foreach(SpriteRenderer p_sprite in GetComponentsInChildren<SpriteRenderer>())
+        {
+            p_sprite.material = p_material;
+        }
     }
 }
