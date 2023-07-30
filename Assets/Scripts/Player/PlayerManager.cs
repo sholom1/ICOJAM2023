@@ -13,11 +13,13 @@ public class PlayerManager : MonoBehaviour
     public int playerCount = 0;
     private int maxPlayers  = 0;
 
+
     [Header("Player materials")]
     public Material[] playerMats;
 
     public UnityEvent OnPlayerDestroy;
     public UnityEvent OnPlayerJoin;
+
 
     private void Start()
     {
