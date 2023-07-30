@@ -36,5 +36,6 @@ public class InputActions : MonoBehaviour
     public void onUIMove(InputAction.CallbackContext context)
     {
         _playerCharacterScript.onUIMove(context.ReadValue<Vector2>());
+        start_menu.OnMove(context.ReadValue<Vector2>());
     }
 }
