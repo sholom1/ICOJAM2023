@@ -33,6 +33,22 @@ public class ScoreKeeper : MonoBehaviour
         //for testing
         UpdateScoreBoard();
     }
+    public void RestartGame()
+    {
+        score.Clear();
+        coins.Clear();
+        ClearScoreBoard();
+    }
+
+    public void ClearScoreBoard()
+    {
+        for(int i = scoreCardDisplays.Count-1; i >= 0; i--)
+        {
+            Destroy(scoreCardDisplays[i].gameObject);
+        }
+        scoreCardDisplays.Clear();
+    }
+
     private void PlayerJoined()
     {
         //Adding scores

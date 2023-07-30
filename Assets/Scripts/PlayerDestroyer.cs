@@ -17,6 +17,12 @@ public class PlayerDestroyer : MonoBehaviour
         Timer.instance.onTimerComplete.AddListener(startListening);
         Timer.instance.onTimerStart.AddListener(destroyPlayers);
     }
+    public void RestartGame()
+    {
+        positions.Clear();
+        playersMarkedForDeath.Clear();
+    }
+
     private void startListening()
     {
         watchingPlayers = true;
