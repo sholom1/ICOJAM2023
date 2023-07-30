@@ -60,16 +60,16 @@ public class ScoreKeeper : MonoBehaviour
         playerManager.ResetPlayerPositions();
         playerManager.ResetPlayers();
 
-
-        GameObject countDown = Instantiate(countDownAnimation);
+        GameObject canvas = FindObjectOfType<Canvas>().gameObject;
+        GameObject countDown = Instantiate(countDownAnimation, canvas.transform);
         CountDownAnimation currentCountDownAnimation = countDown.GetComponent<CountDownAnimation>();
         currentCountDownAnimation.OnAnimationComplete.AddListener(CompleteCountDown);
 
         StopLight stopLight = FindObjectOfType<StopLight>();
         if (stopLight != null)
         {
-            stopLight.StopAllCoroutines();
             stopLight.SetRedLight();
+            stopLight.StopAllCoroutines();
             currentCountDownAnimation.OnAnimationComplete.AddListener(stopLight.SetGreenLight);
         }
 

@@ -48,6 +48,7 @@ public class StopLight : MonoBehaviour
     }
     IEnumerator restart()
     {
+        SetRedLight();
         yield return new WaitForSeconds(resetDelay);
         SetGreenLight();
     }

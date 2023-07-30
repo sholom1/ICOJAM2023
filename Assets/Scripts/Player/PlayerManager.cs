@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
 
             player.transform.position = playerStartPos[playerCount].transform.position;
         }
+        ResetPlayerPositions();
     }
 
     public void OnLeave(PlayerController_1 player)
