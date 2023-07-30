@@ -11,18 +11,22 @@ public class PlayerController_1 : MonoBehaviour
     private Rigidbody2D rb;
 
     public GameObject deathMark;
+    public bool dead = false;
 
     private Vector2 move_Position;
     private bool isBreakDepressed;
     public float max_speed;
     public float speed_modifier;
     public float acceleration_mod;
-
     public float rotation_sensitivity;
 
     private PlayerManager playerManager;
 
     public uint playerID;
+
+    public Joystick players_stick;
+
+    public Material p_material;
 
     [Header("TrackVars")]
     public int check_point_num = 0;
@@ -34,6 +38,16 @@ public class PlayerController_1 : MonoBehaviour
         playerID = GetComponent<PlayerInput>().user.id;
         playerManager = GameObject.FindObjectOfType<PlayerManager>();
         playerManager.OnJoin(this);
+
+        foreach(Joystick stick in GameObject.FindObjectsOfType<Joystick>())
+        {
+            if(stick.stick_id == playerID)
+            {
+                stick.playerController = this;
+                players_stick = stick;
+                break;
+            }
+        }
     }
     private void OnDestroy()
     {
@@ -42,8 +56,11 @@ public class PlayerController_1 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
-        UpdateRotation();
+        if (!dead)
+        {
+            MovePlayer();
+            UpdateRotation();
+        }
     }
 
     private void MovePlayer()
@@ -71,11 +88,49 @@ public class PlayerController_1 : MonoBehaviour
 
     public void updateMovement(Vector2 value)
     {
-        //value.x = -value.x;
         move_Position = value;
+        if(players_stick != null)
+            players_stick.onChangeInput(value);
+
+        print(value);
+    }
+    public void Die()
+    {
+        dead = true;
+        //gameObject.SetActive(false);
+        transform.position = new Vector3(-1000, -1000, -1000); // changed disableing player to moving it off screen and disabling controls
+        playerManager.PlayerDied();
+    }
+    public void Revive()
+    {
+        dead = false;
+        deathMark.SetActive(false);
+        //gameObject.SetActive(true); Needs to be in player manager as go is currently disabled
+    }
+    
+    public void ResetPlayer()
+    {
+        check_point_num = 0;
+        laps_completed = 0;
+        Revive();
     }
     public void HandleBreak(InputAction.CallbackContext ctx)
     {
         isBreakDepressed = ctx.ReadValueAsButton();
+    }
+    
+    public void setMaterial()
+    {
+        foreach(SpriteRenderer p_sprite in GetComponentsInChildren<SpriteRenderer>())
+        {
+            p_sprite.material = p_material;
+        }
+    }
+
+    public void onUIMove(Vector2 value)
+    {
+        if (players_stick != null)
+            players_stick.onChangeInput(value);
+        print(value);
     }
 }

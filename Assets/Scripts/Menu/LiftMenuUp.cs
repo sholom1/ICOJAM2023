@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class LiftMenuUp : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class LiftMenuUp : MonoBehaviour
 
     private TextMeshProUGUI[] text;
 
+    public UnityEvent OnCompleteLift;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +40,7 @@ public class LiftMenuUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerManager.ChangePlayerInput("UI");
+        
         player_count.text = playerManager.players.Count + " Players";
 
         //Flashing
@@ -75,7 +79,7 @@ public class LiftMenuUp : MonoBehaviour
 
             if(timer < 0)
             {
-                GameObject.FindObjectOfType<PlayerManager>().ChangePlayerInput("Player");
+                OnCompleteLift.Invoke();
                 image_to_move.gameObject.SetActive(false);
                 Destroy(this);
             }
@@ -85,7 +89,8 @@ public class LiftMenuUp : MonoBehaviour
     public void TriggerTransistion()
     {
         start_lifting_menu = true;
-
+        playerManager.GetComponent<PlayerInputManager>().DisableJoining();
+        
         if(camera_pan != null)
         {
             camera_pan.TiggerTransistion();

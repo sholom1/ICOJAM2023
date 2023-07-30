@@ -21,7 +21,6 @@ public class Timer : MonoBehaviour
         if (instance)
             Destroy(instance);
         instance = this;
-        RestartTimer();
     }
     public void Update()
     {
@@ -32,7 +31,7 @@ public class Timer : MonoBehaviour
             if (timeRemaining <= 0) onTimerComplete.Invoke();
         }
     }
-    private void StartTimer(float time)
+    public void StartTimer(float time)
     {
         onTimerStart.Invoke();
         timeRemaining = time;
