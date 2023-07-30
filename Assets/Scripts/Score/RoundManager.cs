@@ -73,7 +73,7 @@ public class RoundManager : MonoBehaviour
                 alivePlayers++;
             }
         }
-        if (alivePlayers <= 1)
+        if (alivePlayers == 1)
         {
             EndRound();
         }
@@ -83,7 +83,6 @@ public class RoundManager : MonoBehaviour
     {
         //Searching for the leading player
         PlayerController_1 leadPlayer = null;
-
         foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
         {
             if (leadPlayer == null)
@@ -106,7 +105,21 @@ public class RoundManager : MonoBehaviour
             }
         }
 
-        scoreKeeper.AddScore(leadPlayer.playerID, 1);
+        //Checking for lead ties
+        List<PlayerController_1> leadPlayers = new List<PlayerController_1>();
+        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
+        {
+            if (leadPlayer.laps_completed == player.Value.laps_completed &&
+                leadPlayer.check_point_num == player.Value.check_point_num)
+            {
+                leadPlayers.Add(player.Value);
+            }
+        }
+
+        foreach(var player in leadPlayers)
+        {
+            scoreKeeper.AddScore(player.playerID, 1);
+        }
         scoreKeeper.UpdateScoreBoard();
         //Adding points and checking end of round
         uint highestScore = scoreKeeper.GetScore(scoreKeeper.GetHighestScoreID()[0]);
