@@ -74,7 +74,7 @@ public class PlayerController_1 : MonoBehaviour
         //value.x = -value.x;
         move_Position = value;
     }
-    public void handleBreak(InputAction.CallbackContext ctx)
+    public void HandleBreak(InputAction.CallbackContext ctx)
     {
         isBreakDepressed = ctx.ReadValueAsButton();
     }

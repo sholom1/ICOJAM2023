@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 3883823629075434794}
   - component: {fileID: 2505761374921297706}
   - component: {fileID: 5880838264359563468}
+  - component: {fileID: -2204484917486988356}
   m_Layer: 0
   m_Name: Player_character
   m_TagString: Untagged
@@ -475,7 +476,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8803989670992447905}
         m_TargetAssemblyTypeName: PlayerController_1, Assembly-CSharp
-        m_MethodName: handleBreak
+        m_MethodName: HandleBreak
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -507,9 +508,25 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4190248e-cb1e-4756-9a15-25aff3882207
     m_ActionName: UI/Start[/XInputControllerWindows/start,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -2204484917486988356}
+        m_TargetAssemblyTypeName: PowerupSelector, Assembly-CSharp
+        m_MethodName: OnPowerUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c5028f27-18f5-4a21-9771-0216ab738745
+    m_ActionName: Player/PowerUp[/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: UI
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!61 &2505761374921297706
@@ -571,3 +588,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCharacterScript: {fileID: 8803989670992447905}
   start_menu: {fileID: 0}
+--- !u!114 &-2204484917486988356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768307693771970308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c12b838ef13c6643ae080f850175614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4075272527868393759, guid: 6d0c60d824789e249930bc509b0cd9e5, type: 3}
+  bulletSpeed: 10
+  explosionPrefab: {fileID: 5562518159401244440, guid: ad35d8335873ef242b5f713812679c98, type: 3}
