@@ -23,4 +23,9 @@ public class InputActions : MonoBehaviour
     {
         start_menu.TriggerTransistion();
     }
+
+    public void onUIMove(InputAction.CallbackContext context)
+    {
+        _playerCharacterScript.onUIMove(context.ReadValue<Vector2>());
+    }
 }

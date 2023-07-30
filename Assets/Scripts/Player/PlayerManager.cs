@@ -49,6 +49,7 @@ public class PlayerManager : MonoBehaviour
             player.transform.position = playerStartPos[playerCount].transform.position;
         }
         OnPlayerJoin.Invoke();
+        player.GetComponent<PlayerInput>().currentActionMap = player.GetComponent<PlayerInput>().actions.FindActionMap("UI");
         ResetPlayerPositions();
     }
 

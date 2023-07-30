@@ -88,10 +88,11 @@ public class PlayerController_1 : MonoBehaviour
 
     public void updateMovement(Vector2 value)
     {
-        //value.x = -value.x;
         move_Position = value;
         if(players_stick != null)
             players_stick.onChangeInput(value);
+
+        print(value);
     }
     public void Die()
     {
@@ -124,5 +125,12 @@ public class PlayerController_1 : MonoBehaviour
         {
             p_sprite.material = p_material;
         }
+    }
+
+    public void onUIMove(Vector2 value)
+    {
+        if (players_stick != null)
+            players_stick.onChangeInput(value);
+        print(value);
     }
 }
