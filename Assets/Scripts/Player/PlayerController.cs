@@ -129,7 +129,5 @@ public class PlayerController_1 : MonoBehaviour
     {
         if (players_stick != null)
             players_stick.onChangeInput(value);
-
-
     }
 }
