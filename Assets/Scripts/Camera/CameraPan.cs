@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class CameraPan : MonoBehaviour
 {
-    [Header("Object look at settings")]
-    public bool lookat = false;
-    GameObject look_at_object;
-
     [Header("Movement settings")]
     public bool move_camera = false;
     public List<Vector3> movement_vectors = new List<Vector3>();
@@ -23,12 +19,9 @@ public class CameraPan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(move_camera)
+        if (move_camera)
         {
-            if (look_at_object)
-            {
-                gameObject.transform.LookAt(look_at_object.transform);
-            }
+
             
             transform.position = Vector3.MoveTowards(transform.position, movement_vectors[movement_index], movement_speed * Time.deltaTime);
 
