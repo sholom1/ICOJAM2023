@@ -92,8 +92,6 @@ public class PlayerController_1 : MonoBehaviour
         move_Position = value;
         if(players_stick != null)
             players_stick.onChangeInput(value);
-
-        print(value);
     }
     public void Die()
     {
@@ -132,6 +130,5 @@ public class PlayerController_1 : MonoBehaviour
     {
         if (players_stick != null)
             players_stick.onChangeInput(value);
-        print(value);
     }
 }
