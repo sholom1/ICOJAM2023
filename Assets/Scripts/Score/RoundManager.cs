@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
     //Using Componenets
-    int scoreToWin = 3;
+    int scoreToWin = 5;
     PlayerManager playerManager;
     LiftMenuUp liftMenuUp;
     [SerializeField]
@@ -43,7 +44,9 @@ public class RoundManager : MonoBehaviour
         currentCountDownAnimation.OnAnimationComplete.AddListener(CompleteCountDown);
 
         StopLight stopLight = FindObjectOfType<StopLight>();
-        
+
+        print("Start round");
+
         stopLight.SetRedLight();
         currentCountDownAnimation.OnAnimationComplete.AddListener(() =>
         {
@@ -80,6 +83,7 @@ public class RoundManager : MonoBehaviour
     {
         //Searching for the leading player
         PlayerController_1 leadPlayer = null;
+
         foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
         {
             if (leadPlayer == null)
@@ -88,13 +92,20 @@ public class RoundManager : MonoBehaviour
             }
             else
             {
-                if (leadPlayer.laps_completed < player.Value.laps_completed && 
-                    leadPlayer.check_point_num < player.Value.check_point_num)
+                if (leadPlayer.laps_completed == player.Value.laps_completed)
+                {
+                    if (leadPlayer.check_point_num < player.Value.check_point_num)
+                    {
+                        leadPlayer = player.Value;
+                    }
+                }
+                else if(leadPlayer.laps_completed < player.Value.laps_completed)
                 {
                     leadPlayer = player.Value;
                 }
             }
         }
+
         scoreKeeper.AddScore(leadPlayer.playerID, 1);
         scoreKeeper.UpdateScoreBoard();
         //Adding points and checking end of round

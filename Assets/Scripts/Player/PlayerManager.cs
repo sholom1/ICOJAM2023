@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -59,6 +60,8 @@ public class PlayerManager : MonoBehaviour
         foreach(KeyValuePair<uint, PlayerController_1> player in players)
         {
             player.Value.transform.position = playerStartPos[position].transform.position;
+            player.Value.transform.eulerAngles = new Vector3(0, 0, 0);
+            player.Value.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             position++;
         }
     }

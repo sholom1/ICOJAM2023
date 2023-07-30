@@ -4,6 +4,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
+
 public class LiftMenuUp : MonoBehaviour
 {
     public bool start_lifting_menu = false;
@@ -85,5 +87,6 @@ public class LiftMenuUp : MonoBehaviour
     public void TriggerTransistion()
     {
         start_lifting_menu = true;
+        playerManager.GetComponent<PlayerInputManager>().DisableJoining();
     }
 }
