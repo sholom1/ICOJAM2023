@@ -11314,29 +11314,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1734211558}
     m_Modifications:
-    - target: {fileID: 423436374371879808, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -673.08
-      objectReference: {fileID: 0}
     - target: {fileID: 1831270744769738971, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
       propertyPath: m_Color.a
-      value: 0.8666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965955952507867266, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -453
+      value: 0.9019608
       objectReference: {fileID: 0}
     - target: {fileID: 4273123359851213756, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
       propertyPath: m_Name
       value: EndScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 4273123359851213756, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6732525423700439758, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -155
       objectReference: {fileID: 0}
     - target: {fileID: 9170345793379978250, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
       propertyPath: m_Pivot.x
@@ -11421,10 +11405,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4273123359851213756, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1679435159}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
 --- !u!224 &1679435157 stripped
 RectTransform:
@@ -11436,18 +11417,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4273123359851213756, guid: 7cb8efbf61415fa4a89e4d478ba34569, type: 3}
   m_PrefabInstance: {fileID: 1679435156}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1679435159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679435158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6687bc60560ad4a43aa19e3000e9b67e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1734211557
 PrefabInstance:
   m_ObjectHideFlags: 0

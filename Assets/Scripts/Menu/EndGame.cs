@@ -9,12 +9,12 @@ public class EndGame : MonoBehaviour
     TMP_Text winnerText;
     public void SetWinners(List<PlayerController_1> players)
     {
-        string output = players[0].playerID.ToString();
+        string output = "Player " + players[0].playerID.ToString();
         for (int i = 1; i < players.Count; i++)
         {
-            output += " & " + players[i].playerID.ToString();
+            output += " & " + "Player " + players[i].playerID.ToString();
         }
-        winnerText.text = output + "Won!";
+        winnerText.text = output + " Won!";
     }
 
     public void RestartGame()
