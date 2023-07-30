@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 public class RoundManager : MonoBehaviour
 {
     //Using Componenets
-    int scoreToWin = 5;
+    int scoreToWin = 1;
+    bool endingRound = false;
     PlayerManager playerManager;
     LiftMenuUp liftMenuUp;
     [SerializeField]
     GameObject countDownAnimation;
     ScoreKeeper scoreKeeper;
+    [SerializeField]
+    GameObject endMenu;
 
 
     // Start is called before the first frame update
@@ -61,6 +64,7 @@ public class RoundManager : MonoBehaviour
     public void CompleteCountDown()
     {
         playerManager.ChangePlayerInput("Player");
+        endingRound = false;
     }
 
     public void PlayerDestroyed()
@@ -73,9 +77,13 @@ public class RoundManager : MonoBehaviour
                 alivePlayers++;
             }
         }
-        if (alivePlayers == 1)
+        if (alivePlayers <= 1)
         {
-            EndRound();
+            if (endingRound == false)
+            {
+                endingRound = true;
+                EndRound();
+            }
         }
     }
 
@@ -135,6 +143,16 @@ public class RoundManager : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("end game");
+        playerManager.ChangePlayerInput("UI");
+        endMenu.SetActive(true);
+
+        List<PlayerController_1> winners = new List<PlayerController_1>();
+        List<uint> winnerIDs = scoreKeeper.GetHighestScoreID();
+        foreach(var id in winnerIDs)
+        {
+            winners.Add(playerManager.players[id]);
+        }
+
+        endMenu.GetComponent<EndGame>().SetWinners(winners);
     }
 }

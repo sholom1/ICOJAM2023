@@ -30,6 +30,14 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void RestartGame()
+    {
+        foreach (var player in players.Values)
+        {
+            Destroy(player.gameObject);
+        }
+    }
+
     public void OnJoin(PlayerController_1 player)
     {
         if (playerCount != maxPlayers)
