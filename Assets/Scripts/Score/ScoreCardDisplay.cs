@@ -22,19 +22,18 @@ public class ScoreCardDisplay : MonoBehaviour
     public void SetPlayer(PlayerController_1 _player)
     {
         player = _player;
+        playerText.text = "Player " + player.playerID;
+        playerImage.color = player.p_material.color;
     }
     public uint GetPlayerID()
     {
         return player.playerID;
     }
-    public void UpdateScore(float score)
+    public void UpdateScore(uint score, uint coins)
     {
-
-        string displayText = "";
-        displayText += "ID: " + player.playerID.ToString() + 
-            " Score: "+ score.ToString() + 
-            " Laps: " + player.laps_completed.ToString() +
-            " Checkpoints: " + player.check_point_num.ToString();
-        GetComponentInChildren<TMP_Text>().text = displayText;
+        roundsText.text = score.ToString();
+        lapsText.text = player.laps_completed.ToString();
+        checkPointsText.text = player.check_point_num.ToString();
+        coinsText.text = coins.ToString();
     }
 }
