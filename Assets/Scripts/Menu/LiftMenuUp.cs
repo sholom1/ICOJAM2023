@@ -40,7 +40,7 @@ public class LiftMenuUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerManager.ChangePlayerInput("UI");
+        
         player_count.text = playerManager.players.Count + " Players";
 
         //Flashing
