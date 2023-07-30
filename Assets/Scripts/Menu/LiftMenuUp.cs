@@ -96,4 +96,9 @@ public class LiftMenuUp : MonoBehaviour
             camera_pan.TiggerTransistion();
         }
     }
+
+    public void OnMove(Vector2 value)
+    {
+        camera_pan.moveCameraLeft(value);
+    }
 }
