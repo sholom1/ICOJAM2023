@@ -17,6 +17,8 @@ public class LiftMenuUp : MonoBehaviour
     private float timer = 5f;
     public RectTransform image_to_move;
 
+    public CameraPan camera_pan;
+
     [Header("Flash settings")]
     public float flash_interval = 1.0f;
     private float flash_current_timer = 0.0f;
@@ -88,5 +90,10 @@ public class LiftMenuUp : MonoBehaviour
     {
         start_lifting_menu = true;
         playerManager.GetComponent<PlayerInputManager>().DisableJoining();
+        
+        if(camera_pan != null)
+        {
+            camera_pan.TiggerTransistion();
+        }
     }
 }

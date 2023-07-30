@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private float maxTime = 20;
     [SerializeField]
-    private float minTime = 5;
+    private float minTime = 6;
     [SerializeField]
     private float timeRemaining;
 

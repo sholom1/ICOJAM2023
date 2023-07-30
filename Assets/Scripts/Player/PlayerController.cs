@@ -97,8 +97,7 @@ public class PlayerController_1 : MonoBehaviour
         laps_completed = 0;
         Revive();
     }
-    
-    public void handleBreak(InputAction.CallbackContext ctx)
+    public void HandleBreak(InputAction.CallbackContext ctx)
     {
         isBreakDepressed = ctx.ReadValueAsButton();
     }

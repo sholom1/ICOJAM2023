@@ -329,6 +329,7 @@ MonoBehaviour:
   menuItems: {fileID: 8233121764741161903}
   player_count: {fileID: 4334542241154332126}
   image_to_move: {fileID: 7864100714683305068}
+  camera_pan: {fileID: 0}
   flash_interval: 1
 --- !u!1 &6349038333154790955
 GameObject:
@@ -395,7 +396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Race or DIE
+  m_text: 'Race Race: car car'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
