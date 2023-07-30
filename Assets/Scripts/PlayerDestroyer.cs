@@ -9,8 +9,8 @@ public class PlayerDestroyer : MonoBehaviour
     private GameObject effect;
     [SerializeField]
     private float movementThreshold = 0.1f;
-    private Dictionary<uint, Vector2> positions;
-    private Dictionary<uint, PlayerController_1> playersMarkedForDeath;
+    private Dictionary<uint, Vector2> positions = new Dictionary<uint, Vector2>();
+    private Dictionary<uint, PlayerController_1> playersMarkedForDeath = new Dictionary<uint, PlayerController_1>();
     private bool watchingPlayers;
     void Start()
     {
@@ -20,8 +20,8 @@ public class PlayerDestroyer : MonoBehaviour
     private void startListening()
     {
         watchingPlayers = true;
-        positions = new Dictionary<uint, Vector2>();
-        playersMarkedForDeath = new Dictionary<uint, PlayerController_1>();
+        //positions = new Dictionary<uint, Vector2>();
+        //playersMarkedForDeath = new Dictionary<uint, PlayerController_1>();
         foreach (var player in PlayerManager.instance.players.Values)
         {
             positions.Add(player.playerID, player.transform.position);
@@ -46,8 +46,10 @@ public class PlayerDestroyer : MonoBehaviour
         watchingPlayers = false;
         foreach (var player in playersMarkedForDeath.Values)
         {
-            Destroy(player.gameObject);
+            player.Die();
             Destroy(Instantiate(effect, player.transform.position, Quaternion.identity), 1);
         }
+        playersMarkedForDeath.Clear();
+        positions.Clear();
     }
 }
