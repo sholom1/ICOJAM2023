@@ -109,7 +109,7 @@ public class LiftMenuUp : MonoBehaviour
 
     public void TriggerTransistion()
     {
-        if (complete_lift == false)
+        if (complete_lift == false && playerManager.playerCount > 1)
         {
             if (zoomed_in)
             {

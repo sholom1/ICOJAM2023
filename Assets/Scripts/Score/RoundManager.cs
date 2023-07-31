@@ -6,16 +6,20 @@ using UnityEngine.SceneManagement;
 public class RoundManager : MonoBehaviour
 {
     //Using Componenets
-    int scoreToWin = 1;
+    int scoreToWin = 5;
+    int lapsToEndRound = 5;
     bool endingRound = false;
     PlayerManager playerManager;
     LiftMenuUp liftMenuUp;
+    StartLine startLine;
     [SerializeField]
     GameObject countDownAnimation;
     ScoreKeeper scoreKeeper;
     [SerializeField]
     GameObject endMenu;
 
+    [SerializeField]
+    float endRoundDelay = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,9 @@ public class RoundManager : MonoBehaviour
 
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.SetScoreToWin(scoreToWin);
+
+        startLine = FindObjectOfType<StartLine>();
+        startLine.OnPlayerCrossLine.AddListener(PlayerCrossLine);
     }
 
     public void StartGame()
@@ -39,7 +46,6 @@ public class RoundManager : MonoBehaviour
     {
         playerManager.ResetPlayerPositions();
         playerManager.ResetPlayers();
-        playerManager.ChangePlayerInput("UI");
 
         GameObject canvas = FindObjectOfType<Canvas>().gameObject;
         GameObject countDown = Instantiate(countDownAnimation, canvas.transform);
@@ -64,9 +70,16 @@ public class RoundManager : MonoBehaviour
     public void CompleteCountDown()
     {
         playerManager.ChangePlayerInput("Player");
-        endingRound = false;
     }
-
+    public void PlayerCrossLine(PlayerController_1 player)
+    {
+        Debug.Log("player crossed line");
+        if(player.laps_completed >= lapsToEndRound)
+        {
+            Debug.Log("ending round");
+            StartRoundEnd();
+        }
+    }
     public void PlayerDestroyed()
     {
         int alivePlayers = 0;
@@ -79,56 +92,68 @@ public class RoundManager : MonoBehaviour
         }
         if (alivePlayers <= 1)
         {
-            if (endingRound == false)
-            {
-                endingRound = true;
-                EndRound();
-            }
+            StartRoundEnd();
         }
     }
 
-    public void EndRound()
+    public void StartRoundEnd()
     {
-        //Searching for the leading player
-        PlayerController_1 leadPlayer = null;
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
+        if (!endingRound)
         {
-            if (leadPlayer == null)
+            //Disable player controls
+            playerManager.ChangePlayerInput("UI");
+
+            //Searching for the leading player
+            PlayerController_1 leadPlayer = null;
+            foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
             {
-                leadPlayer = player.Value;
-            }
-            else
-            {
-                if (leadPlayer.laps_completed == player.Value.laps_completed)
+                if (leadPlayer == null)
                 {
-                    if (leadPlayer.check_point_num < player.Value.check_point_num)
+                    leadPlayer = player.Value;
+                }
+                else
+                {
+                    if (leadPlayer.laps_completed == player.Value.laps_completed)
+                    {
+                        if (leadPlayer.check_point_num < player.Value.check_point_num)
+                        {
+                            leadPlayer = player.Value;
+                        }
+                    }
+                    else if(leadPlayer.laps_completed < player.Value.laps_completed)
                     {
                         leadPlayer = player.Value;
                     }
                 }
-                else if(leadPlayer.laps_completed < player.Value.laps_completed)
+            }
+
+            //Checking for lead ties
+            List<PlayerController_1> leadPlayers = new List<PlayerController_1>();
+            foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
+            {
+                if (leadPlayer.laps_completed == player.Value.laps_completed &&
+                    leadPlayer.check_point_num == player.Value.check_point_num)
                 {
-                    leadPlayer = player.Value;
+                    leadPlayers.Add(player.Value);
                 }
             }
-        }
 
-        //Checking for lead ties
-        List<PlayerController_1> leadPlayers = new List<PlayerController_1>();
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
-        {
-            if (leadPlayer.laps_completed == player.Value.laps_completed &&
-                leadPlayer.check_point_num == player.Value.check_point_num)
+            //Adding and updating score
+            foreach(var player in leadPlayers)
             {
-                leadPlayers.Add(player.Value);
+                scoreKeeper.AddScore(player.playerID, 1);
             }
-        }
+            scoreKeeper.UpdateScoreBoard();
 
-        foreach(var player in leadPlayers)
-        {
-            scoreKeeper.AddScore(player.playerID, 1);
+            StartCoroutine(EndRound());
         }
-        scoreKeeper.UpdateScoreBoard();
+    }
+
+    IEnumerator EndRound()
+    {
+        endingRound = true;
+        yield return new WaitForSeconds(endRoundDelay);
+        endingRound = false;
         //Adding points and checking end of round
         uint highestScore = scoreKeeper.GetScore(scoreKeeper.GetHighestScoreID()[0]);
         if (highestScore >= scoreToWin)
