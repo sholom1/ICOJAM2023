@@ -12,7 +12,10 @@ public class PowerupSelector : MonoBehaviour
     private ScoreKeeper scoreKeeper;
     private PlayerController_1 player;
     [SerializeField]
-    private int cost;
+    private int cost = 5;
+    [SerializeField]
+    private int leadPenalty = 2;
+    private int cost_actual { get { return (cost * (player.inLead ? 1 : leadPenalty)); } }
     
     private PowerUpTypes[] avaliablePowerups = { PowerUpTypes.bullet, PowerUpTypes.explosion, PowerUpTypes.swapObstacles };
     private PowerUpTypes selectedPowerup = PowerUpTypes.none;
@@ -25,12 +28,14 @@ public class PowerupSelector : MonoBehaviour
     {
         if (!ctx.performed) return;
         if (isSelecting) return;
-        if (scoreKeeper.GetCoins(player.playerID) < cost) return;
         // Todo add cost
         if (selectedPowerup == PowerUpTypes.none)
         {
+            if (scoreKeeper.GetCoins(player.playerID) < cost_actual)
+                return;
             int index = Random.Range(0, avaliablePowerups.Length);
             selectedPowerup = avaliablePowerups[index];
+            scoreKeeper.SubtractCoins(player.playerID, (uint)cost_actual);
             isSelecting = true;
             player.players_stick.selectPowerUp(index, () => isSelecting = false);
             return;

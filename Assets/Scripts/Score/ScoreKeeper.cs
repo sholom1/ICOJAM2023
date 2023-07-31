@@ -115,6 +115,10 @@ public class ScoreKeeper : MonoBehaviour
     }
     public uint GetCoins(uint playerID)
     {
-        return score[playerID];
+        return coins[playerID];
+    }
+    public void SubtractCoins(uint playerID, uint amt)
+    {
+        coins[playerID] -= amt;
     }
 }

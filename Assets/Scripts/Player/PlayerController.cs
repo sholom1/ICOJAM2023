@@ -31,11 +31,14 @@ public class PlayerController_1 : MonoBehaviour
     [Header("TrackVars")]
     public int check_point_num = 0;
     public int laps_completed = 0;
-    public int coins;
+
+    private RoundManager roundManager;
+    public bool inLead { get { return roundManager.leadPlayer.playerID == playerID; } }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        roundManager = FindObjectOfType<RoundManager>();
         playerID = GetComponent<PlayerInput>().user.id;
         playerManager = GameObject.FindObjectOfType<PlayerManager>();
         playerManager.OnJoin(this);
