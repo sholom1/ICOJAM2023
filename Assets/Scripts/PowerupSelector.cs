@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,11 @@ public class PowerupSelector : MonoBehaviour
     {
         player = GetComponent<PlayerController_1>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+    }
+    private void Update()
+    {
+        if (player && player.players_stick && player.players_stick.costText)
+            player.players_stick.costText.text = cost_actual.ToString();
     }
     public void OnPowerUp(InputAction.CallbackContext ctx)
     {

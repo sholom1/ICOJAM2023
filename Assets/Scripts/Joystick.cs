@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,11 +21,15 @@ public class Joystick : MonoBehaviour
     private MeshRenderer powerUpDisplay;
     [SerializeField]
     private float delay;
+
+    public TextMeshPro costText;
     // Start is called before the first frame update
     void Start()
     {
         start_vector = target.eulerAngles;
         powerUpDisplay.material = powerUpImages[currentIndex];
+
+        costText = GetComponentInChildren<TextMeshPro>();
     }
 
     public void onChangeInput(Vector2 value)

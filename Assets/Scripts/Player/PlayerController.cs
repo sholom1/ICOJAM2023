@@ -33,7 +33,7 @@ public class PlayerController_1 : MonoBehaviour
     public int laps_completed = 0;
 
     private RoundManager roundManager;
-    public bool inLead { get { return roundManager.leadPlayer.playerID == playerID; } }
+    public bool inLead { get { return roundManager.leadPlayer && roundManager.leadPlayer.playerID == playerID; } }
 
     private void Start()
     {
