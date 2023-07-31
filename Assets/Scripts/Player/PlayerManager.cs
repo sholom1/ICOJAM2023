@@ -37,10 +37,8 @@ public class PlayerManager : MonoBehaviour
 
     public void RestartGame()
     {
-        foreach (var player in players.Values)
-        {
-            Destroy(player.gameObject);
-        }
+        ResetPlayers();
+        ResetPlayerPositions();
     }
 
     public void OnJoin(PlayerController_1 player)

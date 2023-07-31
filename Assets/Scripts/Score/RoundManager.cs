@@ -39,6 +39,7 @@ public class RoundManager : MonoBehaviour
 
     public void StartGame()
     {
+        scoreKeeper.InitalizeScoreCards();
         StartRound();
     }
 
