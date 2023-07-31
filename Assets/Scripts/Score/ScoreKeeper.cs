@@ -113,4 +113,8 @@ public class ScoreKeeper : MonoBehaviour
     {
         return score[playerID];
     }
+    public uint GetCoins(uint playerID)
+    {
+        return score[playerID];
+    }
 }

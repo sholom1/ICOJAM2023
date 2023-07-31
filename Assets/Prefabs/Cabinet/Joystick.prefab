@@ -269,7 +269,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 59a173d6e18442547b80785a9eb2d988, type: 2}
   - {fileID: 2100000, guid: 203ef2f612f78a84e90dd7836e728589, type: 2}
   - {fileID: 2100000, guid: 032594fd53d5c224a903977be10b309d, type: 2}
+  rotations: 3
   powerUpDisplay: {fileID: 9161104058949401802}
+  delay: 0.5
 --- !u!1 &7095388749983548038
 GameObject:
   m_ObjectHideFlags: 0

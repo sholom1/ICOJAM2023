@@ -8,38 +8,55 @@ public class PowerupSelector : MonoBehaviour
     [SerializeField] Rigidbody2D bulletPrefab;
     [SerializeField] float bulletSpeed;
     [SerializeField] Collider2D explosionPrefab;
-    enum powerups
+    private bool isSelecting;
+    private ScoreKeeper scoreKeeper;
+    private PlayerController_1 player;
+    [SerializeField]
+    private int cost;
+    
+    private PowerUpTypes[] avaliablePowerups = { PowerUpTypes.bullet, PowerUpTypes.explosion, PowerUpTypes.swapObstacles };
+    private PowerUpTypes selectedPowerup = PowerUpTypes.none;
+    private void Start()
     {
-        bullet,
-        explosion,
-        swapObstacles,
-        none
+        player = GetComponent<PlayerController_1>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
-    private powerups[] avaliablePowerups = { powerups.bullet, powerups.explosion, powerups.swapObstacles };
-    private powerups selectedPowerup;
     public void OnPowerUp(InputAction.CallbackContext ctx)
     {
-        if (!ctx.ReadValueAsButton()) return;
+        if (!ctx.performed) return;
+        if (isSelecting) return;
+        if (scoreKeeper.GetCoins(player.playerID) < cost) return;
         // Todo add cost
-        if (selectedPowerup == powerups.none)
+        if (selectedPowerup == PowerUpTypes.none)
         {
-            selectedPowerup = avaliablePowerups[Random.Range(0, avaliablePowerups.Length)];
+            int index = Random.Range(0, avaliablePowerups.Length);
+            selectedPowerup = avaliablePowerups[index];
+            isSelecting = true;
+            player.players_stick.selectPowerUp(index, () => isSelecting = false);
             return;
         }
         switch (selectedPowerup)
         {
-            case powerups.bullet:
+            case PowerUpTypes.bullet:
                 var bullet = Instantiate(bulletPrefab, transform.position + transform.up, transform.rotation);
                 bullet.velocity = GetComponent<Rigidbody2D>().velocity + (Vector2)transform.up * bulletSpeed;
                 Destroy(bullet.gameObject, 5);
                 break;
-            case powerups.explosion:
+            case PowerUpTypes.explosion:
                 Physics2D.IgnoreCollision(Instantiate(explosionPrefab, transform.position, Quaternion.identity), GetComponent<Collider2D>());
                 break;
-            case powerups.swapObstacles:
+            case PowerUpTypes.swapObstacles:
                 ObstacleManager.instance.Swap();
                 break;
         }
-        selectedPowerup = powerups.none;
+        selectedPowerup = PowerUpTypes.none;
+        player.players_stick.resetPowerUpImage();
     }
+}
+enum PowerUpTypes
+{
+    bullet,
+    explosion,
+    swapObstacles,
+    none
 }
