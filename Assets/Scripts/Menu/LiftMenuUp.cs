@@ -124,6 +124,8 @@ public class LiftMenuUp : MonoBehaviour
                     {
                         zoomed_in = true;
                     });
+                    start_lifting_menu = true;
+                    playerManager.GetComponent<PlayerInputManager>().DisableJoining();
                     camera_pan.TiggerTransistion();
                 }
             }
