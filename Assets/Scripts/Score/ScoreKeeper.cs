@@ -30,7 +30,6 @@ public class ScoreKeeper : MonoBehaviour
     }
     private void Update()
     {
-        //for testing
         UpdateScoreBoard();
     }
     public void RestartGame()
@@ -85,7 +84,7 @@ public class ScoreKeeper : MonoBehaviour
             GameObject currentScoreDisplay = Instantiate(scoreCard, scoreCardBoard.transform);
             ScoreCardDisplay scoreCardDisplay = currentScoreDisplay.GetComponent<ScoreCardDisplay>();
             scoreCardDisplay.SetPlayer(player);
-            scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()]);
+            scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()], coins[scoreCardDisplay.GetPlayerID()]);
             scoreCardDisplays.Add(scoreCardDisplay);
         }
         UpdateScoreBoard();
@@ -94,7 +93,7 @@ public class ScoreKeeper : MonoBehaviour
     {
         foreach(var scoreCardDisplay in scoreCardDisplays) 
         {
-            scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()]);
+            scoreCardDisplay.UpdateScore(score[scoreCardDisplay.GetPlayerID()], coins[scoreCardDisplay.GetPlayerID()]);
         }
     }
     public void AddScore(uint playerID, uint amount)
@@ -107,7 +106,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     public void SetScoreToWin(int amount)
     {
-        titleText.text = "First to " + amount.ToString();
+        titleText.text = "First to " + amount.ToString() + " Rounds";
     }
     public List<uint> GetHighestScoreID()
     {
@@ -134,5 +133,13 @@ public class ScoreKeeper : MonoBehaviour
     public uint GetScore(uint playerID)
     {
         return score[playerID];
+    }
+    public uint GetCoins(uint playerID)
+    {
+        return coins[playerID];
+    }
+    public void SubtractCoins(uint playerID, uint amt)
+    {
+        coins[playerID] -= amt;
     }
 }
