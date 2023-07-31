@@ -54,6 +54,8 @@ public class PlayerDestroyer : MonoBehaviour
         {
             Destroy(Instantiate(effect, player.transform.position, Quaternion.identity), 1);
             player.Die();
+            AudioManager.instance.CrowdLaugh();
+
         }
         playersMarkedForDeath.Clear();
         positions.Clear();

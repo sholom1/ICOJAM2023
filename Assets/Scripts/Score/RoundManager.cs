@@ -46,8 +46,10 @@ public class RoundManager : MonoBehaviour
 
     public void StartRound()
     {
+        
         playerManager.ResetPlayerPositions();
         playerManager.ResetPlayers();
+        AudioManager.instance.Reset();
 
         GameObject canvas = FindObjectOfType<Canvas>().gameObject;
         GameObject countDown = Instantiate(countDownAnimation, canvas.transform);
@@ -58,15 +60,18 @@ public class RoundManager : MonoBehaviour
 
         print("Start round");
 
+        Timer.instance.firstTimer = true;
+
         stopLight.SetRedLight();
         currentCountDownAnimation.OnAnimationComplete.AddListener(() =>
         {
-            Timer.instance.RestartTimer();
             stopLight.SetGreenLight();
-            stopLight.enabled = true;
+            stopLight.enabled = true; 
+            Timer.instance.RestartTimer();
         });
         
-
+        AudioManager.instance.RoundStart();
+        
     }
 
     public void CompleteCountDown()
