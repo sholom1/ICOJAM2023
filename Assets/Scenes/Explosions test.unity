@@ -18460,7 +18460,7 @@ PrefabInstance:
       objectReference: {fileID: 1679435158}
     - target: {fileID: 2111388317271076298, guid: b783517126211be428fa45dd54338ecf, type: 3}
       propertyPath: endRoundDelay
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2359585632517941835, guid: b783517126211be428fa45dd54338ecf, type: 3}
       propertyPath: m_Name
