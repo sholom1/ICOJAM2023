@@ -115,7 +115,6 @@ public class LiftMenuUp : MonoBehaviour
                 start_lifting_menu = true;
                 playerManager.GetComponent<PlayerInputManager>().DisableJoining();
                 camera_pan.TiggerTransistion();
-                camera_pan = null;
             }
         }
     }
