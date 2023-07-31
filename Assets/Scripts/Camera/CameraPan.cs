@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class CameraPan : MonoBehaviour
 {
     [Header("Movement settings")]
@@ -17,6 +17,8 @@ public class CameraPan : MonoBehaviour
     public Quaternion help_rotation;
 
     private Quaternion start_rot;
+
+    public UnityEvent OnCompleteZoom;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class CameraPan : MonoBehaviour
 
                 if(movement_index == movement_vectors.Count)
                 {
+                    OnCompleteZoom.Invoke();
                     Destroy(this);
                 }
             }
