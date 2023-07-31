@@ -1171,7 +1171,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7134874751924341798, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
 --- !u!43 &259890904
 Mesh:
@@ -1713,7 +1716,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7134874751924341798, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
 --- !u!43 &383202899
 Mesh:
@@ -4591,7 +4597,10 @@ PrefabInstance:
     - {fileID: 5718222764618911509, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7134874751924341798, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
 --- !u!43 &1042229642
 Mesh:
@@ -8868,7 +8877,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7134874751924341798, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
 --- !u!43 &1247828869
 Mesh:
@@ -9538,7 +9550,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7134874751924341798, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0ecb15f1f0044de4cb3815b1839a2309, type: 3}
 --- !u!1 &1402627426
 GameObject:
