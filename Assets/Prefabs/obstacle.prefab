@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8600009565342698062}
   - component: {fileID: 5331762774640558438}
   - component: {fileID: 2055886807573231372}
-  - component: {fileID: 1718574890408847469}
+  - component: {fileID: 7412584117833364645}
   m_Layer: 0
   m_Name: boost
   m_TagString: Untagged
@@ -116,31 +116,24 @@ CircleCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!249 &1718574890408847469
-AreaEffector2D:
-  serializedVersion: 2
+--- !u!114 &7412584117833364645
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2552904866739846410}
   m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGlobalAngle: 0
-  m_ForceAngle: 0
-  m_ForceMagnitude: 25
-  m_ForceVariation: 0
-  m_ForceTarget: 0
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63376b7cd00a384fbe890f96e41b272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceAmount: 100
 --- !u!1 &3177112658275797526
 GameObject:
   m_ObjectHideFlags: 0
