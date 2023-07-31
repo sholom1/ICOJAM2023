@@ -1935,7 +1935,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 3.279, y: 1.947}
-  m_SizeDelta: {x: 20, y: 5}
+  m_SizeDelta: {x: 18.085, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452707298
 MonoBehaviour:
@@ -1957,7 +1957,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: stop on the red light Go on green
+  m_text: '- Win 5 rounds before your opponents
+
+    - Win rounds by having the most
+    laps + checkpoints once the round ends
+
+    - Round ends when there is 1 or 0
+    players alive'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1984,8 +1990,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 7.95
+  m_fontSizeBase: 7.95
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2813,7 +2819,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aim of the game
+  m_text: Rules
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14559,9 +14565,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 974394251}
-  - {fileID: 1571491419}
   - {fileID: 538729341}
   - {fileID: 452707297}
+  - {fileID: 1571491419}
   - {fileID: 2021284275}
   - {fileID: 902275877}
   - {fileID: 323952525}
@@ -15421,7 +15427,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571491418}
   m_LocalRotation: {x: 0.666614, y: -0.000000014901163, z: 0.000000014901163, w: 0.7454032}
-  m_LocalPosition: {x: 0, y: 0, z: 2.683}
+  m_LocalPosition: {x: 0, y: 0, z: 2.889}
   m_LocalScale: {x: 0.142375, y: 0.142375, z: 0.142375}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -15429,8 +15435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 83.613, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.279, y: 1.86}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 3.355, y: 1.879}
+  m_SizeDelta: {x: 21.4804, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571491420
 MonoBehaviour:
@@ -15455,6 +15461,8 @@ MonoBehaviour:
   m_text: 'Controller
 
     Move: Joystick
+
+    Break: X
 
     Powerup: A'
   m_isRightToLeft: 0
@@ -15490,8 +15498,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -16053,6 +16061,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 117255679103938532, guid: d01950d9935301943874806071a43a61, type: 3}
+      propertyPath: m_text
+      value: Press any button to join (2-4 players)
+      objectReference: {fileID: 0}
     - target: {fileID: 175423597101122333, guid: d01950d9935301943874806071a43a61, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -20664,7 +20676,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021284274}
   m_LocalRotation: {x: 0.666614, y: -0.000000014901163, z: 0.000000014901163, w: 0.7454032}
-  m_LocalPosition: {x: 0, y: 0, z: 2.683}
+  m_LocalPosition: {x: 0, y: 0, z: 2.902}
   m_LocalScale: {x: 0.142375, y: 0.142375, z: 0.142375}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -20672,7 +20684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 83.613, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.409, y: 1.86}
+  m_AnchoredPosition: {x: 5.431, y: 1.888}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021284276
@@ -20698,6 +20710,8 @@ MonoBehaviour:
   m_text: 'Keyboard
 
     Move: WASD
+
+    Breaks: SpaceBar
 
     Powerup: B'
   m_isRightToLeft: 0
@@ -20733,8 +20747,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
