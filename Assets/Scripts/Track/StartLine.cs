@@ -26,7 +26,7 @@ public class StartLine : MonoBehaviour
                 Player.laps_completed++;
                 Player.check_point_num = 0;
                 OnPlayerCrossLine.Invoke(Player);
-
+                AudioManager.instance.CrowdCheer();
                 GO_to_cheer.TiggerCheer();
             }
         }

@@ -34,6 +34,7 @@ public class EndGame : MonoBehaviour
         FindAnyObjectByType<ScoreKeeper>().RestartGame();
         FindAnyObjectByType<LiftMenuUp>().RestartGame();
         gameObject.SetActive(false);
+        AudioManager.instance.HardReset();
         restarting = false;
     }
 }

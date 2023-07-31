@@ -21,6 +21,7 @@ public class StopLight : MonoBehaviour
     [SerializeField]
     private AudioSource beeper;
     private bool hasEnded = false;
+    private bool countdown = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +36,15 @@ public class StopLight : MonoBehaviour
         if (remaining < 0)
         {
             if (!hasEnded) StartCoroutine(restart());
+            countdown = false;
+            Debug.Log(countdown);
         }
-        else if (remaining < 4 && remaining > 3 && !beeper.isPlaying)
+        /*else if (remaining < 6 && !countdown)
         {
-            beeper.Play();
-        }
+            AudioManager.instance.Countdown();
+            countdown = true;
+            Debug.Log(countdown);
+        }*/
         else if (remaining < 3)
         {
             display.text = Mathf.FloorToInt(remaining + 1).ToString();
@@ -60,9 +65,11 @@ public class StopLight : MonoBehaviour
     }
     public void SetGreenLight()
     {
+        print("new light: " + Timer.instance.firstTimer);
         hasEnded = false;
         display.text = "";
-        Timer.instance.RestartTimer();
+        if(!Timer.instance.firstTimer)
+            Timer.instance.RestartTimer();
         greenLight.material = green;
         redLight.material = black;
     }
