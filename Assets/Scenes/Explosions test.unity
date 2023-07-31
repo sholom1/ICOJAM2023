@@ -2081,7 +2081,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452707296}
   m_LocalRotation: {x: 0.666614, y: -0.000000014901163, z: 0.000000014901163, w: 0.7454032}
-  m_LocalPosition: {x: 0, y: 0, z: 3.462}
+  m_LocalPosition: {x: 0, y: 0, z: 3.5}
   m_LocalScale: {x: 0.142375, y: 0.142375, z: 0.142375}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2089,8 +2089,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 83.613, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.279, y: 1.947}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 3.28, y: 1.954}
+  m_SizeDelta: {x: 19.4047, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452707298
 MonoBehaviour:
@@ -2112,7 +2112,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: stop on the red light Go on green
+  m_text: '- Win 5 rounds before the other players
+
+    - Win rounds by having the
+    most laps and checkpoints
+
+    - Rounds are 5 laps or the last player standing'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2139,8 +2144,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 9.62
+  m_fontSizeBase: 9.62
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2937,7 +2942,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538729340}
   m_LocalRotation: {x: 0.666614, y: -0.000000014901163, z: 0.000000014901163, w: 0.7454032}
-  m_LocalPosition: {x: 0, y: 0, z: 3.787}
+  m_LocalPosition: {x: 0, y: 0, z: 3.83}
   m_LocalScale: {x: 0.142375, y: 0.142375, z: 0.142375}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2945,7 +2950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 83.613, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.279, y: 1.983}
+  m_AnchoredPosition: {x: 3.28, y: 1.99}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &538729342
@@ -2968,7 +2973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aim of the game
+  m_text: 'Rules:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15563,7 +15568,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571491418}
   m_LocalRotation: {x: 0.666614, y: -0.000000014901163, z: 0.000000014901163, w: 0.7454032}
-  m_LocalPosition: {x: 0, y: 0, z: 2.683}
+  m_LocalPosition: {x: 0, y: 0, z: 2.832}
   m_LocalScale: {x: 0.142375, y: 0.142375, z: 0.142375}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -15571,7 +15576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 83.613, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.279, y: 1.86}
+  m_AnchoredPosition: {x: 3.3, y: 1.866}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571491420
@@ -15594,11 +15599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controller
-
-    Move: Joystick
-
-    Powerup: A'
+  m_text: "Controller Controls:\r\n\rMove: Joystick\r\n\rBreak: X\r\n\rPowerup: A"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15625,15 +15626,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -20826,7 +20827,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021284274}
   m_LocalRotation: {x: 0.666614, y: -0.000000014901163, z: 0.000000014901163, w: 0.7454032}
-  m_LocalPosition: {x: 0, y: 0, z: 2.683}
+  m_LocalPosition: {x: 0, y: 0, z: 2.805}
   m_LocalScale: {x: 0.142375, y: 0.142375, z: 0.142375}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -20834,7 +20835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 83.613, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.409, y: 1.86}
+  m_AnchoredPosition: {x: 5.496, y: 1.877}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021284276
@@ -20857,11 +20858,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Keyboard
-
-    Move: WASD
-
-    Powerup: B'
+  m_text: "Keyboard Controls:\r\n\rMove: WASD\r\n\rBreaks: SpaceBar\r\n\rPowerup:
+    B\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20888,15 +20886,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
