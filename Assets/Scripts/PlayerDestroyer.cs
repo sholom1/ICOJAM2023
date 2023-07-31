@@ -52,8 +52,8 @@ public class PlayerDestroyer : MonoBehaviour
         watchingPlayers = false;
         foreach (var player in playersMarkedForDeath.Values)
         {
-            player.Die();
             Destroy(Instantiate(effect, player.transform.position, Quaternion.identity), 1);
+            player.Die();
         }
         playersMarkedForDeath.Clear();
         positions.Clear();

@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class LiftMenuUp : MonoBehaviour
 {
     public bool complete_lift = false;
+    public bool zoomed_in = false;
     public bool start_lifting_menu = false;
     public GameObject menuItems;
     public TextMeshProUGUI player_count;
@@ -108,14 +109,23 @@ public class LiftMenuUp : MonoBehaviour
 
     public void TriggerTransistion()
     {
-        if (complete_lift == false)
+        if (complete_lift == false && playerManager.playerCount > 1)
         {
-            if (camera_pan != null && camera_pan.TiggerTransistion())
+            if (zoomed_in)
             {
                 start_lifting_menu = true;
                 playerManager.GetComponent<PlayerInputManager>().DisableJoining();
-                camera_pan.TiggerTransistion();
-                camera_pan = null;
+            }
+            else
+            {
+                if (camera_pan != null && camera_pan.TiggerTransistion())
+                {
+                    camera_pan.OnCompleteZoom.AddListener(() =>
+                    {
+                        zoomed_in = true;
+                    });
+                    camera_pan.TiggerTransistion();
+                }
             }
         }
     }

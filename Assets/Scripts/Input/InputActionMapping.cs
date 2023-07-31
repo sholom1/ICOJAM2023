@@ -12,7 +12,7 @@ public class InputActions : MonoBehaviour
 
     private void Start()
     {
-        start_menu = GameObject.FindObjectOfType<LiftMenuUp>();
+        start_menu = FindObjectOfType<LiftMenuUp>();
         end_menu = FindObjectOfType<EndGame>(true);
     }
 
