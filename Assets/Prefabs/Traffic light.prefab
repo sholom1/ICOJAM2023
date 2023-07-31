@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1598371327441131691}
   - component: {fileID: 2803328739831307826}
   - component: {fileID: 1976444075523875613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,17 +25,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18997018643613482}
-  m_LocalRotation: {x: 0.6710342, y: -0.00000021024508, z: -0.00000017204594, w: 0.74142647}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0091}
   m_LocalScale: {x: 0.17799, y: 0.17799, z: 0.17799}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6051243915892088985}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1.2133, y: 1.4673}
+  m_AnchoredPosition: {x: -0.006, y: 0.071}
+  m_SizeDelta: {x: 1.3938, y: 1.1744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &2803328739831307826
 MeshRenderer:
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 12
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 6800191093238087737}
   - component: {fileID: 3739870756138159050}
   - component: {fileID: 3659452492468102480}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Traffic light back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2280233520379572564}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.049778003, y: 0.0000000029404703, z: -0.00000004784497, w: 0.99876034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.059700012, y: 0.040955305, z: 0.51883626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4797
+  m_VersionIndex: 4800
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 4705869112880141599}
   - component: {fileID: 7809381937401092736}
   - component: {fileID: 3606059760735526777}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4255064069593609314}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.04977805, y: -0.00000006181995, z: -0.00000022323545, w: 0.99876034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05030012, y: 0.009600043, z: 0.5941999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2731,7 +2731,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 900
+  m_VersionIndex: 903
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2850,7 +2850,7 @@ GameObject:
   - component: {fileID: 6051243915892088985}
   - component: {fileID: 7000841565881801702}
   - component: {fileID: 8757340801020905787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Traffic light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2867,8 +2867,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8033, y: 1.9173, z: 3.4878}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1308067316778861900}
   - {fileID: 5214603156142966463}
@@ -3006,7 +3006,7 @@ GameObject:
   - component: {fileID: 4603492689240424957}
   - component: {fileID: 3830323302571663281}
   - component: {fileID: 2511718334246918689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3021,8 +3021,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615710059332649772}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.049778104, y: 0.00000001357355, z: -0.00000027234313, w: 0.9987603}
-  m_LocalPosition: {x: -0.09967947, y: 0.016126156, z: 0.18144941}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09967947, y: 0.054, z: 0.18144941}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4720,7 +4720,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 18
+  m_VersionIndex: 21
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
