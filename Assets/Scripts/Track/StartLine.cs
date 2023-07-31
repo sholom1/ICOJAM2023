@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StartLine : MonoBehaviour
 {
     private int checkpoint_count;
     public CrowdPeople GO_to_cheer;
+    public UnityEvent<PlayerController_1> OnPlayerCrossLine;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class StartLine : MonoBehaviour
             {
                 Player.laps_completed++;
                 Player.check_point_num = 0;
+                OnPlayerCrossLine.Invoke(Player);
 
                 GO_to_cheer.TiggerCheer();
             }

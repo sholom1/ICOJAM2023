@@ -13,8 +13,13 @@ public class PlayerManager : MonoBehaviour
     public int playerCount = 0;
     private int maxPlayers  = 0;
 
+
+    [Header("Player materials")]
+    public Material[] playerMats;
+
     public UnityEvent OnPlayerDestroy;
     public UnityEvent OnPlayerJoin;
+
 
     private void Start()
     {
@@ -30,16 +35,27 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void RestartGame()
+    {
+        ResetPlayers();
+        ResetPlayerPositions();
+    }
+
     public void OnJoin(PlayerController_1 player)
     {
         if (playerCount != maxPlayers)
         {
             if (players.TryAdd(player.playerID, player))
+            {
+                player.p_material = playerMats[playerCount];
+                player.setMaterial();
                 playerCount++;
+            }
 
             player.transform.position = playerStartPos[playerCount].transform.position;
         }
         OnPlayerJoin.Invoke();
+        player.GetComponent<PlayerInput>().currentActionMap = player.GetComponent<PlayerInput>().actions.FindActionMap("UI");
         ResetPlayerPositions();
     }
 
