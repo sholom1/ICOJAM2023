@@ -32,6 +32,28 @@ public class ScoreKeeper : MonoBehaviour
     {
         UpdateScoreBoard();
     }
+    public void RestartGame()
+    {
+        foreach(var id in playerManager.players.Keys)
+        {
+            score[id] = 0;
+        }
+        foreach (var id in playerManager.players.Keys)
+        {
+            coins[id] = 0;
+        }
+        ClearScoreBoard();
+    }
+
+    public void ClearScoreBoard()
+    {
+        for(int i = scoreCardDisplays.Count-1; i >= 0; i--)
+        {
+            Destroy(scoreCardDisplays[i].gameObject);
+        }
+        scoreCardDisplays.Clear();
+    }
+
     private void PlayerJoined()
     {
         //Adding scores
@@ -47,9 +69,8 @@ public class ScoreKeeper : MonoBehaviour
                 coins.Add(player.playerID, 0);
             }
         }
-        InitalizeScoreCards();
     }
-    private void InitalizeScoreCards()
+    public void InitalizeScoreCards()
     {
         //Deleting all children
         for(int i = scoreCardBoard.transform.childCount-1; i >= 0; i--)

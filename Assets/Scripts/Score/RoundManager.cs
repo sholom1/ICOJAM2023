@@ -7,13 +7,20 @@ public class RoundManager : MonoBehaviour
 {
     //Using Componenets
     int scoreToWin = 5;
+    int lapsToEndRound = 5;
+    bool endingRound = false;
     PlayerManager playerManager;
     LiftMenuUp liftMenuUp;
+    StartLine startLine;
     [SerializeField]
     GameObject countDownAnimation;
     ScoreKeeper scoreKeeper;
     public PlayerController_1 leadPlayer = null;
+    [SerializeField]
+    GameObject endMenu;
 
+    [SerializeField]
+    float endRoundDelay = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +33,14 @@ public class RoundManager : MonoBehaviour
 
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.SetScoreToWin(scoreToWin);
+
+        startLine = FindObjectOfType<StartLine>();
+        startLine.OnPlayerCrossLine.AddListener(PlayerCrossLine);
     }
 
     public void StartGame()
     {
+        scoreKeeper.InitalizeScoreCards();
         StartRound();
     }
 
@@ -37,7 +48,6 @@ public class RoundManager : MonoBehaviour
     {
         playerManager.ResetPlayerPositions();
         playerManager.ResetPlayers();
-        playerManager.ChangePlayerInput("UI");
 
         GameObject canvas = FindObjectOfType<Canvas>().gameObject;
         GameObject countDown = Instantiate(countDownAnimation, canvas.transform);
@@ -63,7 +73,15 @@ public class RoundManager : MonoBehaviour
     {
         playerManager.ChangePlayerInput("Player");
     }
-
+    public void PlayerCrossLine(PlayerController_1 player)
+    {
+        Debug.Log("player crossed line");
+        if(player.laps_completed >= lapsToEndRound)
+        {
+            Debug.Log("ending round");
+            StartRoundEnd();
+        }
+    }
     public void PlayerDestroyed()
     {
         int alivePlayers = 0;
@@ -74,58 +92,74 @@ public class RoundManager : MonoBehaviour
                 alivePlayers++;
             }
         }
-        if (alivePlayers == 1)
+        if (alivePlayers <= 1)
         {
-            EndRound();
+            StartRoundEnd();
         }
     }
 
-    public void EndRound()
+    public void StartRoundEnd()
     {
-        //Award coins
-        foreach (var player in playerManager.players)
+        if (!endingRound)
         {
-            scoreKeeper.AddCoins(player.Key, (uint)(player.Value.check_point_num + player.Value.laps_completed * 5));
-        }
-        //Searching for the leading player
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
-        {
-            if (leadPlayer == null)
+            //Disable player controls
+            playerManager.ChangePlayerInput("UI");
+            //Add coins
+            foreach (var player in playerManager.players)
             {
-                leadPlayer = player.Value;
+                scoreKeeper.AddCoins(player.Key, (uint)(player.Value.check_point_num + player.Value.laps_completed * 5));
             }
-            else
+            //Searching for the leading player
+            PlayerController_1 leadPlayer = null;
+            foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
             {
-                if (leadPlayer.laps_completed == player.Value.laps_completed)
+                if (leadPlayer == null)
                 {
-                    if (leadPlayer.check_point_num < player.Value.check_point_num)
+                    leadPlayer = player.Value;
+                }
+                else
+                {
+                    if (leadPlayer.laps_completed == player.Value.laps_completed)
+                    {
+                        if (leadPlayer.check_point_num < player.Value.check_point_num)
+                        {
+                            leadPlayer = player.Value;
+                        }
+                    }
+                    else if(leadPlayer.laps_completed < player.Value.laps_completed)
                     {
                         leadPlayer = player.Value;
                     }
                 }
-                else if(leadPlayer.laps_completed < player.Value.laps_completed)
+            }
+
+            //Checking for lead ties
+            List<PlayerController_1> leadPlayers = new List<PlayerController_1>();
+            foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
+            {
+                if (leadPlayer.laps_completed == player.Value.laps_completed &&
+                    leadPlayer.check_point_num == player.Value.check_point_num)
                 {
-                    leadPlayer = player.Value;
+                    leadPlayers.Add(player.Value);
                 }
             }
-        }
 
-        //Checking for lead ties
-        List<PlayerController_1> leadPlayers = new List<PlayerController_1>();
-        foreach (KeyValuePair<uint, PlayerController_1> player in playerManager.players)
-        {
-            if (leadPlayer.laps_completed == player.Value.laps_completed &&
-                leadPlayer.check_point_num == player.Value.check_point_num)
+            //Adding and updating score
+            foreach(var player in leadPlayers)
             {
-                leadPlayers.Add(player.Value);
+                scoreKeeper.AddScore(player.playerID, 1);
             }
-        }
+            scoreKeeper.UpdateScoreBoard();
 
-        foreach(var player in leadPlayers)
-        {
-            scoreKeeper.AddScore(player.playerID, 1);
+            StartCoroutine(EndRound());
         }
-        scoreKeeper.UpdateScoreBoard();
+    }
+
+    IEnumerator EndRound()
+    {
+        endingRound = true;
+        yield return new WaitForSeconds(endRoundDelay);
+        endingRound = false;
         //Adding points and checking end of round
         uint highestScore = scoreKeeper.GetScore(scoreKeeper.GetHighestScoreID()[0]);
         if (highestScore >= scoreToWin)
@@ -140,6 +174,16 @@ public class RoundManager : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("end game");
+        playerManager.ChangePlayerInput("UI");
+        endMenu.SetActive(true);
+
+        List<PlayerController_1> winners = new List<PlayerController_1>();
+        List<uint> winnerIDs = scoreKeeper.GetHighestScoreID();
+        foreach(var id in winnerIDs)
+        {
+            winners.Add(playerManager.players[id]);
+        }
+
+        endMenu.GetComponent<EndGame>().SetWinners(winners);
     }
 }

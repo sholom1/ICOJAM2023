@@ -99,7 +99,6 @@ public class PlayerController_1 : MonoBehaviour
     public void Die()
     {
         dead = true;
-        //gameObject.SetActive(false);
         transform.position = new Vector3(-1000, -1000, -1000); // changed disableing player to moving it off screen and disabling controls
         playerManager.PlayerDied();
     }
@@ -107,7 +106,6 @@ public class PlayerController_1 : MonoBehaviour
     {
         dead = false;
         deathMark.SetActive(false);
-        //gameObject.SetActive(true); Needs to be in player manager as go is currently disabled
     }
     
     public void ResetPlayer()

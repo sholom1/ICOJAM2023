@@ -8,14 +8,18 @@ using UnityEngine.InputSystem;
 
 public class LiftMenuUp : MonoBehaviour
 {
+    public bool complete_lift = false;
+    public bool zoomed_in = false;
     public bool start_lifting_menu = false;
     public GameObject menuItems;
     public TextMeshProUGUI player_count;
 
     private PlayerManager playerManager;
 
-    private float timer = 5f;
+    private float max_time = 5f;
+    private float timer;
     public RectTransform image_to_move;
+    public Vector3 initial_image_position;
 
     public CameraPan camera_pan;
 
@@ -35,14 +39,29 @@ public class LiftMenuUp : MonoBehaviour
     {
         playerManager = GameObject.FindObjectOfType<PlayerManager>();
         text = GetComponentsInChildren<TextMeshProUGUI>();
+
+        initial_image_position = image_to_move.localPosition;
+        timer = max_time;
+    }
+
+    public void RestartGame()
+    {
+        timer = max_time;
+        start_lifting_menu = false;
+        complete_lift = false;
+        image_to_move.gameObject.SetActive(true);
+        image_to_move.localPosition = initial_image_position;
+        playerManager.GetComponent<PlayerInputManager>().EnableJoining();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        player_count.text = playerManager.players.Count + " Players";
-
+        if (complete_lift == false)
+        {
+            playerManager.ChangePlayerInput("UI");
+            player_count.text = playerManager.players.Count + " Players";
+        }
         //Flashing
         if (flash_current_timer < 0.0f)
         {
@@ -81,18 +100,33 @@ public class LiftMenuUp : MonoBehaviour
             {
                 OnCompleteLift.Invoke();
                 image_to_move.gameObject.SetActive(false);
-                Destroy(this);
+                start_lifting_menu = false;
+                complete_lift = true;
+                //Destroy(this);
             }
         }
     }
 
     public void TriggerTransistion()
     {
-        if(camera_pan != null && camera_pan.TiggerTransistion())
+        if (complete_lift == false && playerManager.playerCount > 1)
         {
-            start_lifting_menu = true;
-            playerManager.GetComponent<PlayerInputManager>().DisableJoining();
-            camera_pan.TiggerTransistion();
+            if (zoomed_in)
+            {
+                start_lifting_menu = true;
+                playerManager.GetComponent<PlayerInputManager>().DisableJoining();
+            }
+            else
+            {
+                if (camera_pan != null && camera_pan.TiggerTransistion())
+                {
+                    camera_pan.OnCompleteZoom.AddListener(() =>
+                    {
+                        zoomed_in = true;
+                    });
+                    camera_pan.TiggerTransistion();
+                }
+            }
         }
     }
 

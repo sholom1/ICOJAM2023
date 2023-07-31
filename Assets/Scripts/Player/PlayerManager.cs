@@ -35,6 +35,12 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void RestartGame()
+    {
+        ResetPlayers();
+        ResetPlayerPositions();
+    }
+
     public void OnJoin(PlayerController_1 player)
     {
         if (playerCount != maxPlayers)
