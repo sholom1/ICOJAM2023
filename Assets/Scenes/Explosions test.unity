@@ -9228,6 +9228,129 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1365699792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365699794}
+  - component: {fileID: 1365699793}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1365699793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365699792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0817cd0fab3cc447961308ca60d5d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: 6loop
+    clip: {fileID: 8300000, guid: 9edfac1656c94b1468c7a2751f5d1ac9, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 9loop
+    clip: {fileID: 8300000, guid: f82d866613d1dcb409a4c9facab4bbc1, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 12loop
+    clip: {fileID: 8300000, guid: 33b8c4d483d37054b9281e05711272f9, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 15loop
+    clip: {fileID: 8300000, guid: b4ee3abc8d47f494e9350ac61e0c26dc, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 18
+    clip: {fileID: 8300000, guid: 39e1dc6df7f35ee458751e1609b8dda1, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 18loopintro
+    clip: {fileID: 8300000, guid: 9361c40ca1b412e4180101572c8a317e, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: stop
+    clip: {fileID: 8300000, guid: d301890e652a56b4493ce112a1f61cec, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: menu
+    clip: {fileID: 8300000, guid: 06d0c104c7aedba4faf05a491ece2f9a, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: cheer1
+    clip: {fileID: 8300000, guid: 88ccd7b1a0d421e49976f9dad89e6e60, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: cheer2
+    clip: {fileID: 8300000, guid: 911c9b941314617429129c016305b106, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: laugh1
+    clip: {fileID: 8300000, guid: 9892f390fe5548a438420e8cb96c6a34, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: laugh2
+    clip: {fileID: 8300000, guid: a881de890e64462469c8fc6669223663, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: buildup
+    clip: {fileID: 8300000, guid: cee4af43fae31854e8acd0f186f7c560, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+--- !u!4 &1365699794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365699792}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.205751, y: 3.7554626, z: -0.009748969}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1383315721
 Mesh:
   m_ObjectHideFlags: 0
@@ -15824,28 +15947,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTimerStart:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 145099202}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onTimerUpdate:
     m_PersistentCalls:
       m_Calls: []
   onTimerComplete:
     m_PersistentCalls:
       m_Calls: []
-  maxTime: 20
-  minTime: 5
+  max: 6
+  min: 1
   timeRemaining: 0
+  firstTimer: 1
 --- !u!114 &1586151240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21320,3 +21432,4 @@ SceneRoots:
   - {fileID: 585668310}
   - {fileID: 1512452053}
   - {fileID: 6539724989817678154}
+  - {fileID: 1365699794}
